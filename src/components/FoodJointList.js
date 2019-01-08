@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import React, { Component } from 'react';
-import { ScrollView, Text, Button } from 'react-native';
+import { ScrollView } from 'react-native';
 import FoodJointDetail from './FoodJointDetail';
 import axios from 'axios';
 
@@ -10,7 +10,7 @@ class FoodJointList extends Component {
     };
 
     componentDidMount() {
-        const URL = 'http://192.168.0.11:7777/api/v1/tests';
+        const URL = 'http://172.24.25.128:7777/api/v1/tests';
         axios.get(URL)
             .then(response => {
                 this.setState({

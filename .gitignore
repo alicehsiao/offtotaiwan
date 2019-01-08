@@ -57,5 +57,3 @@ buck-out/
 
 .env
 .eslintrc
-./ios/offtotaiwan/AppDelegate.m
-./android/app/src/main/AndroidManifest.xml

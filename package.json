@@ -8,11 +8,16 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "native-base": "^2.10.0",
     "prop-types": "^15.6.2",
     "react": "16.6.3",
     "react-native": "0.57.8",
+    "react-native-elements": "^1.0.0-beta7",
     "react-native-gesture-handler": "^1.0.12",
     "react-native-maps": "^0.22.1",
+    "react-native-scrollable-tab-view": "^0.10.0",
+    "react-native-swiper": "^1.5.14",
+    "react-native-ui-kitten": "^3.1.2",
     "react-native-vector-icons": "^6.1.0",
     "react-navigation": "^3.0.9"
   },

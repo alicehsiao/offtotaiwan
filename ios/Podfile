@@ -41,6 +41,9 @@ target 'offtotaiwan' do
 
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
+
+  # pod 'react-native-config', :path => '../node_modules/react-native-config'
+
 end
 
 post_install do |installer|
@@ -51,6 +54,9 @@ post_install do |installer|
       end
     end
     if target.name == "React"
+      target.remove_from_project
+    end
+    if target.name == "react-native-config"
       target.remove_from_project
     end
   end

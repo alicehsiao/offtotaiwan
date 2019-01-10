@@ -5,29 +5,30 @@
 /* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, Button } from 'react-native';
 import { createBottomTabNavigator, createAppContainer, createStackNavigator } from 'react-navigation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {RkButton} from 'react-native-ui-kitten';
+import HomeScreen from './components/HomeScreen';
+import MapScreen from './components/MapScreen';
 
-class HomeScreen extends React.Component {
+// class HomeScreen extends React.Component {
   
-  state = {
+//   state = {
 
-  }
-  render() {
-    return (
-      <View style={styles.screenStyle}>
-        <Text>Home!</Text>
-        <RkButton
-        onPress = {
-            () => this.props.navigation.navigate('Details')
-        }
-        >Go to Details</RkButton>
-      </View>
-    );
-  }
-}
+//   }
+//   render() {
+//     return (
+//       <View style={styles.screenStyle}>
+//         <Text>Home!</Text>
+//         <Button
+//         onPress = {
+//             () => this.props.navigation.navigate('Details')
+//         }
+//         />
+//       </View>
+//     );
+//   }
+// }
 
 class DetailsScreen extends React.Component {
   render() {
@@ -58,6 +59,7 @@ class SettingsScreen extends React.Component {
 const HomeStack = createStackNavigator({
     Home: HomeScreen,
     Details: DetailsScreen,
+    Maps: MapScreen
 });
 
 const SettingsStack = createStackNavigator({
@@ -227,7 +229,6 @@ export default App;
 //   );
 // };
 // export default App;
-
 
 
 

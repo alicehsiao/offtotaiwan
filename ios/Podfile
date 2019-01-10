@@ -41,6 +41,10 @@ target 'offtotaiwan' do
 
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
+  pod 'Firebase/Core', '~> 5.15.0'
+  pod 'Firebase/Auth', '~> 5.15.0'
+  pod 'Firebase/Firestore', '~> 5.15.0'
+  pod 'Firebase/Database', '~> 5.15.0'
 
   # pod 'react-native-config', :path => '../node_modules/react-native-config'
 

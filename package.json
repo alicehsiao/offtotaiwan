@@ -4,16 +4,20 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "test": "jest",
+    "ios": "open ios/offtotaiwan.xcworkspace"
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "firebase": "^5.7.2",
     "native-base": "^2.10.0",
     "prop-types": "^15.6.2",
+    "re-base": "^4.0.0",
     "react": "16.6.3",
     "react-native": "0.57.8",
     "react-native-config": "^0.11.7",
     "react-native-elements": "^1.0.0-beta7",
+    "react-native-firebase": "^5.2.0",
     "react-native-gesture-handler": "^1.0.12",
     "react-native-maps": "^0.22.1",
     "react-native-scrollable-tab-view": "^0.10.0",

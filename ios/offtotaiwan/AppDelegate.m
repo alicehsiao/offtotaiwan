@@ -11,6 +11,7 @@
 #import <React/RCTRootView.h>
 #import <ReactNativeConfig/ReactNativeConfig.h>
 #import <GoogleMaps/GoogleMaps.h>
+#import <Firebase.h>
 
 @implementation AppDelegate
 
@@ -18,6 +19,7 @@
 {
   NSString *apiUrl = [ReactNativeConfig envFor:@"GOOGLE_MAP_KEY"];
   [GMSServices provideAPIKey:apiUrl];
+  
 
   NSURL *jsCodeLocation;
 
@@ -27,6 +29,7 @@
     jsCodeLocation = [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
   #endif
 
+  [FIRApp configure];
   RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
                                                       moduleName:@"offtotaiwan"
                                                initialProperties:nil

@@ -51,6 +51,10 @@
 		8EAAB08678404D90AF5CF4BA /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3B24D4393C446CB8B70962C /* Octicons.ttf */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		B07A6BF621E6CAEF00977E8B /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B07A6BF321E6CAD300977E8B /* libReactNativeConfig.a */; };
+		B0A5402621E800CF00F48A57 /* libRCTFBSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B0A53FED21E8003D00F48A57 /* libRCTFBSDK.a */; };
+		B0A5402821E800D800F48A57 /* libFBSDKCoreKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B0A5402721E800D800F48A57 /* libFBSDKCoreKit.a */; };
+		B0A5402A21E800DD00F48A57 /* libFBSDKLoginKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B0A5402921E800DD00F48A57 /* libFBSDKLoginKit.a */; };
+		B0A5402C21E800E200F48A57 /* libFBSDKShareKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B0A5402B21E800E200F48A57 /* libFBSDKShareKit.a */; };
 		B0B77C7721E7FA1600A75CA7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B0B77C7621E7FA1600A75CA7 /* GoogleService-Info.plist */; };
 		BDD30EAAC40743E99003D1F6 /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 19C3ABEBD9B04B799C525B6F /* FontAwesome5_Solid.ttf */; };
 		D00F8CAE3CFC413C8001BFA8 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3333E0BF180842C28BE814B4 /* FontAwesome.ttf */; };
@@ -364,6 +368,13 @@
 			remoteGlobalIDString = 3DF7F6AC203AA09B00D0EAB7;
 			remoteInfo = "ReactNativeConfig-tvOS";
 		};
+		B0A53FEC21E8003D00F48A57 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B0A53FE821E8003D00F48A57 /* RCTFBSDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9350E0F11CE3B0920041D815;
+			remoteInfo = RCTFBSDK;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -410,6 +421,11 @@
 		AE6CDEBEE4C34CCEAE4EA668 /* rubicon-icon-font.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "rubicon-icon-font.ttf"; path = "../node_modules/native-base/Fonts/rubicon-icon-font.ttf"; sourceTree = "<group>"; };
 		AFF681D63F794971AC62842C /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
 		B07A6BC821E6CAD300977E8B /* ReactNativeConfig.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeConfig.xcodeproj; path = "../node_modules/react-native-config/ios/ReactNativeConfig.xcodeproj"; sourceTree = "<group>"; };
+		B0A53FE721E7FFA700F48A57 /* offtotaiwan.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = offtotaiwan.entitlements; path = offtotaiwan/offtotaiwan.entitlements; sourceTree = "<group>"; };
+		B0A53FE821E8003D00F48A57 /* RCTFBSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTFBSDK.xcodeproj; path = "../node_modules/react-native-fbsdk/ios/RCTFBSDK.xcodeproj"; sourceTree = "<group>"; };
+		B0A5402721E800D800F48A57 /* libFBSDKCoreKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libFBSDKCoreKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0A5402921E800DD00F48A57 /* libFBSDKLoginKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libFBSDKLoginKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0A5402B21E800E200F48A57 /* libFBSDKShareKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libFBSDKShareKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0B77C7621E7FA1600A75CA7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B9D9BB828B304397961E4A7E /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
 		C3B24D4393C446CB8B70962C /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
@@ -433,6 +449,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0A5402C21E800E200F48A57 /* libFBSDKShareKit.a in Frameworks */,
+				B0A5402A21E800DD00F48A57 /* libFBSDKLoginKit.a in Frameworks */,
+				B0A5402821E800D800F48A57 /* libFBSDKCoreKit.a in Frameworks */,
+				B0A5402621E800CF00F48A57 /* libRCTFBSDK.a in Frameworks */,
 				B07A6BF621E6CAEF00977E8B /* libReactNativeConfig.a in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				11D1A2F320CAFA9E000508D9 /* libRCTAnimation.a in Frameworks */,
@@ -568,6 +588,7 @@
 		13B07FAE1A68108700A75B9A /* offtotaiwan */ = {
 			isa = PBXGroup;
 			children = (
+				B0A53FE721E7FFA700F48A57 /* offtotaiwan.entitlements */,
 				B0B77C7621E7FA1600A75CA7 /* GoogleService-Info.plist */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
@@ -606,6 +627,9 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B0A5402B21E800E200F48A57 /* libFBSDKShareKit.a */,
+				B0A5402921E800DD00F48A57 /* libFBSDKLoginKit.a */,
+				B0A5402721E800D800F48A57 /* libFBSDKCoreKit.a */,
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
 				D823F2C9912D0AC987CDF5E6 /* libPods-offtotaiwan.a */,
 			);
@@ -633,6 +657,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				B0A53FE821E8003D00F48A57 /* RCTFBSDK.xcodeproj */,
 				B07A6BC821E6CAD300977E8B /* ReactNativeConfig.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
@@ -747,6 +772,14 @@
 			name = "Recovered References";
 			sourceTree = "<group>";
 		};
+		B0A53FE921E8003D00F48A57 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B0A53FED21E8003D00F48A57 /* libRCTFBSDK.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -841,6 +874,11 @@
 					};
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = Q4S3X9742R;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -876,6 +914,10 @@
 				{
 					ProductGroup = ADBDB9201DFEBF0600ED6528 /* Products */;
 					ProjectRef = ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */;
+				},
+				{
+					ProductGroup = B0A53FE921E8003D00F48A57 /* Products */;
+					ProjectRef = B0A53FE821E8003D00F48A57 /* RCTFBSDK.xcodeproj */;
 				},
 				{
 					ProductGroup = 00C302B61ABCB90400DB3ED1 /* Products */;
@@ -1213,6 +1255,13 @@
 			remoteRef = B07A6BF421E6CAD300977E8B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		B0A53FED21E8003D00F48A57 /* libRCTFBSDK.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTFBSDK.a;
+			remoteRef = B0A53FEC21E8003D00F48A57 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -1306,6 +1355,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-offtotaiwan/Pods-offtotaiwan-resources.sh",
+				"${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseFirestore/gRPCCertificates-Firestore.bundle",
 				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
@@ -1328,6 +1378,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FacebookSDKStrings.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/gRPCCertificates-Firestore.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AntDesign.ttf",
@@ -1505,9 +1556,19 @@
 			baseConfigurationReference = 5DFE0C8DF3EAB8CF285E8F35 /* Pods-offtotaiwan.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = offtotaiwan/offtotaiwan.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = Q4S3X9742R;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/FirebaseAnalytics/Frameworks\"",
+					"\"${PODS_ROOT}/FirebaseInstanceID/Frameworks\"",
+					"\"${PODS_ROOT}/GoogleAppMeasurement/Frameworks\"",
+					"\"${PODS_ROOT}/GoogleMaps/Base/Frameworks\"",
+					"\"${PODS_ROOT}/GoogleMaps/Maps/Frameworks\"",
+					"~/Documents/FacebookSDK",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
@@ -1530,8 +1591,18 @@
 			baseConfigurationReference = 085A9AE650DBE2F17752A9EA /* Pods-offtotaiwan.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = offtotaiwan/offtotaiwan.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = Q4S3X9742R;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/FirebaseAnalytics/Frameworks\"",
+					"\"${PODS_ROOT}/FirebaseInstanceID/Frameworks\"",
+					"\"${PODS_ROOT}/GoogleAppMeasurement/Frameworks\"",
+					"\"${PODS_ROOT}/GoogleMaps/Base/Frameworks\"",
+					"\"${PODS_ROOT}/GoogleMaps/Maps/Frameworks\"",
+					"~/Documents/FacebookSDK",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",

@@ -46,6 +46,10 @@ target 'offtotaiwan' do
   pod 'Firebase/Firestore', '~> 5.15.0'
   pod 'Firebase/Database', '~> 5.15.0'
 
+  pod 'FacebookSDK'
+  pod 'FBSDKShareKit'
+  pod 'FBSDKLoginKit'
+
   # pod 'react-native-config', :path => '../node_modules/react-native-config'
 
 end

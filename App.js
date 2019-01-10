@@ -9,6 +9,7 @@
 import React, { Component } from 'react';
 import {Button, View, StyleSheet} from 'react-native';
 import firebase from 'react-native-firebase';
+import { LoginButton, AccessToken } from 'react-native-fbsdk';
                                 
 export default class App extends Component {
   dothis = () => {
@@ -23,14 +24,35 @@ export default class App extends Component {
 
   render() {
     return (
-        <View style={styles.container}>
-          < Button
-            title = "Log In With Facebook"
-            onPress = {
-              () => this.dothis()
+        // <View style={styles.container}>
+        //   < Button
+        //     title = "Log In With Facebook"
+        //     onPress = {
+        //       () => this.dothis()
+        //     }
+        //   />
+        // </View>
+        < View style = {
+          styles.container
+        } >
+        <LoginButton
+          onLoginFinished={
+            (error, result) => {
+              if (error) {
+                console.log("login has error: " + result.error);
+              } else if (result.isCancelled) {
+                console.log("login is cancelled.");
+              } else {
+                AccessToken.getCurrentAccessToken().then(
+                  (data) => {
+                    console.log(data.accessToken.toString())
+                  }
+                )
+              }
             }
-          />
-        </View>
+          }
+          onLogoutFinished={() => console.log("logout.")}/>
+      </View>
     );
   }
 }

@@ -140,7 +140,6 @@ android {
 dependencies {
     compile project(':react-native-google-signin')
     compile project(':react-native-fbsdk')
-    implementation project(':react-native-firebase')
     implementation project(':react-native-config')
     implementation project(':react-native-vector-icons')
     implementation project(':react-native-maps')

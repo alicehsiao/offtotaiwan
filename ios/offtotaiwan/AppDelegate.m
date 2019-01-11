@@ -11,7 +11,6 @@
 #import <React/RCTRootView.h>
 #import <ReactNativeConfig/ReactNativeConfig.h>
 #import <GoogleMaps/GoogleMaps.h>
-#import <Firebase.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import "RNGoogleSignin.h"
 
@@ -31,7 +30,6 @@
     jsCodeLocation = [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
   #endif
 
-  [FIRApp configure];
   RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
                                                       moduleName:@"offtotaiwan"
                                                initialProperties:nil

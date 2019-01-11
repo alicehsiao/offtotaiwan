@@ -13,6 +13,7 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import <Firebase.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import "RNGoogleSignin.h"
 
 @implementation AppDelegate
 
@@ -48,12 +49,17 @@
             openURL:(NSURL *)url
             options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
   
-  BOOL handled = [[FBSDKApplicationDelegate sharedInstance] application:application
-                                                                openURL:url
-                                                      sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]
-                                                             annotation:options[UIApplicationOpenURLOptionsAnnotationKey]
-                  ];
+  BOOL handledFB = [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                                  openURL:url
+                                                        sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]
+                                                               annotation:options[UIApplicationOpenURLOptionsAnnotationKey]];
+  
+  BOOL handledGG = [RNGoogleSignin application:application
+                                       openURL:url
+                             sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]
+                                    annotation:options[UIApplicationOpenURLOptionsAnnotationKey]];
+  
   // Add any custom logic here.
-  return handled;
+  return handledFB || handledGG;
 }
 @end

@@ -50,6 +50,8 @@ target 'offtotaiwan' do
   pod 'FBSDKShareKit'
   pod 'FBSDKLoginKit'
 
+  pod 'GoogleSignIn'
+
   # pod 'react-native-config', :path => '../node_modules/react-native-config'
 
 end

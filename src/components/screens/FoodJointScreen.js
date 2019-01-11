@@ -1,16 +1,21 @@
 /* eslint-disable no-console */
 import React, { Component } from 'react';
 import { ScrollView } from 'react-native';
-import FoodJointDetail from './FoodJointDetail';
+import PlaceDetail from './PlaceDetail';
 import axios from 'axios';
 
-class FoodJointList extends Component {
+class FoodJointScreen extends Component {
+    static navigationOptions = {
+        title: "Food Joints",
+    };
+
     state = {
         foodJoints: []
     };
 
     componentDidMount() {
-        const URL = 'http://192.168.0.11:7777/api/v1/tests';
+        // const URL = 'http://192.168.0.11:7777/api/v1/tests';
+        const URL = 'http://172.24.25.128:7777/api/v1/tests';
         axios.get(URL)
             .then(response => {
                 this.setState({
@@ -22,7 +27,7 @@ class FoodJointList extends Component {
 
     renderFoodJoints() {
        return this.state.foodJoints.map(place => 
-            <FoodJointDetail key={place.name} place={place} navigation={this.props.navigation}/>
+            <PlaceDetail key={place.name} place={place} navigation={this.props.navigation}/>
        );
     }
 
@@ -35,4 +40,4 @@ class FoodJointList extends Component {
     }
 }
 
-export default FoodJointList;
+export default FoodJointScreen;

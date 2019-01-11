@@ -1,15 +1,119 @@
-/* eslint-disable react-native/no-raw-text */
-/* eslint-disable react/jsx-no-undef */
-/* eslint-disable react-native/no-color-literals */
-/* eslint-disable react/display-name */
-/* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
+/* eslint-disable react/display-name */
 import React, { Component } from 'react';
-import { Text, View, Button } from 'react-native';
-import { createBottomTabNavigator, createAppContainer, createStackNavigator } from 'react-navigation';
+import { createBottomTabNavigator, createStackNavigator, createAppContainer } from 'react-navigation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import HomeScreen from './components/HomeScreen';
-import MapScreen from './components/MapScreen';
+import DetailsScreen from './components/screens/DetailsScreen';
+import FoodJointScreen from './components/screens/FoodJointScreen';
+// import PropTypes from 'prop-types';
+import {
+  HomeScreen,
+  SettingsScreen,
+  SearchScreen,
+  HeartScreen,
+  EventsScreen
+} from './components/screens';
+
+class App extends Component {
+  render() {
+    return (
+      <AppContainer />
+    )
+  }
+}
+
+// React Navigation
+const HomeStack = createStackNavigator({
+    Home: HomeScreen,
+    FoodJoints: FoodJointScreen,
+    Details: DetailsScreen
+});
+
+const SearchStack = createStackNavigator({
+    Search: SearchScreen
+});
+
+const EventsStack = createStackNavigator({
+  Events: EventsScreen
+});
+
+const HeartStack = createStackNavigator({
+  Heart: HeartScreen
+});
+
+const SettingsStack = createStackNavigator({
+  Settings: SettingsScreen
+});
+
+
+
+const TabNavigator = createBottomTabNavigator(
+    {
+        Home: HomeStack,
+        Search: SearchStack,
+        Heart: HeartStack,
+        Events: EventsStack,
+        Settings: SettingsStack
+    },
+    {
+    defaultNavigationOptions: ({ navigation }) => ({
+      tabBarIcon: ({ tintColor }) => {
+        const { routeName } = navigation.state;
+        let IconComponent = Ionicons;
+        let iconName;
+        switch(routeName) {
+          case "Home":
+            iconName = `ios-information-circle`;
+            break;
+          case "Settings":
+            iconName = `ios-options`;
+            break;
+          case "Heart":
+            iconName = `ios-heart`;
+            break;
+          case "Events":
+            iconName = `ios-calendar`;
+            break;
+          case "Search":
+            iconName = `ios-search`;
+            break;
+        }
+
+        // You can return any component that you like here!
+        return <IconComponent name={iconName} size={25} color={tintColor} />;
+      },
+    }),
+    tabBarOptions: {
+      activeTintColor: 'tomato',
+      inactiveTintColor: 'gray',
+    },
+  }
+);
+
+const AppContainer = createAppContainer(TabNavigator);
+
+export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import Ionicons from 'react-native-vector-icons/Ionicons';
+// import HomeScreen from './components/HomeScreen';
+// import MapScreen from './components/MapScreen';
 
 // class HomeScreen extends React.Component {
   
@@ -30,91 +134,39 @@ import MapScreen from './components/MapScreen';
 //   }
 // }
 
-class DetailsScreen extends React.Component {
-  render() {
-    return (
-      <View style={styles.screenStyle}>
-        <Text>Details!</Text>
-      </View>
-    );
-  }
-}
+// class SettingsScreen extends React.Component {
+//   render() {
+//     return (
+//       <View style={styles.screenStyle}>
+//         <Text>Settings!</Text>
+//         < Button
+//         title = "Go to Details"
+//         onPress = {
+//             () => this.props.navigation.navigate('Details')
+//         }
+//         />
+//       </View>
+//     );
+//   }
+// }
 
-class SettingsScreen extends React.Component {
-  render() {
-    return (
-      <View style={styles.screenStyle}>
-        <Text>Settings!</Text>
-        < Button
-        title = "Go to Details"
-        onPress = {
-            () => this.props.navigation.navigate('Details')
-        }
-        />
-      </View>
-    );
-  }
-}
+// const HomeStack = createStackNavigator({
+//     Home: HomeScreen,
+//     Details: DetailsScreen,
+//     Maps: MapScreen
+// });
 
-const HomeStack = createStackNavigator({
-    Home: HomeScreen,
-    Details: DetailsScreen,
-    Maps: MapScreen
-});
+// const SettingsStack = createStackNavigator({
+//     Settings: SettingsScreen,
+//     Details: DetailsScreen,
+// });
 
-const SettingsStack = createStackNavigator({
-    Settings: SettingsScreen,
-    Details: DetailsScreen,
-});
 
-const TabNavigator = createBottomTabNavigator(
-    {
-        Home: HomeStack,
-        Settings: SettingsStack,
-    },
-    {
-    defaultNavigationOptions: ({ navigation }) => ({
-      tabBarIcon: ({ tintColor }) => {
-        const { routeName } = navigation.state;
-        let IconComponent = Ionicons;
-        let iconName;
-        if (routeName === 'Home') {
-          iconName = `ios-information-circle`;
-          // Sometimes we want to add badges to some icons. 
-          // You can check the implementation below.
-        } else if (routeName === 'Settings') {
-          iconName = `ios-options`;
-        }
-
-        // You can return any component that you like here!
-        return <IconComponent name={iconName} size={25} color={tintColor} />;
-      },
-    }),
-    tabBarOptions: {
-      activeTintColor: 'tomato',
-      inactiveTintColor: 'gray',
-    },
-  }
-);
-
-const AppContainer = createAppContainer(TabNavigator);
-
-class App extends Component {
-    render() {
-        return <AppContainer />;
-    }
-}
-
-const styles = {
-    screenStyle: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
-    }
-}
-
-export default App;
-
+// class App extends Component {
+//     render() {
+//         return <AppContainer />;
+//     }
+// }
 
 
 // SCROLLABLE TAB VIEW: SIMPLE

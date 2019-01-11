@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { Text, View, Button} from 'react-native';
-import { CardSection, Card } from './common';
+import { CardSection, Card } from '../common';
 // import axios from 'axios';
 // import { GOOGLE_API_KEY } from 'react-native-dotenv';
 
-class FoodJointDetail extends React.Component {
+class PlaceDetail extends React.Component {
     state = {
         engAddress: '',
         coordinate: [],
@@ -73,4 +73,4 @@ const styles = {
     }
 }
 
-export default FoodJointDetail;
+export default PlaceDetail;

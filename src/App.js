@@ -2,7 +2,10 @@
 /* eslint-disable react/display-name */
 import React, { Component } from 'react';
 import Router from './Router';
-import { facebookLogin, googleLogin } from '../config/auth'; 
+import firebaseApp from '../config/firebase';
+import firebase from 'firebase';
+import { LoginManager, AccessToken } from 'react-native-fbsdk';
+import { GoogleSignin } from 'react-native-google-signin';
 
 class App extends Component {
   state = {
@@ -13,10 +16,68 @@ class App extends Component {
 
   }
 
+  facebookLogin = async () => {
+    try {
+      const result = await LoginManager.logInWithReadPermissions(['public_profile', 'email']);
+
+      if (result.isCancelled) {
+        throw new Error('User cancelled request'); // Handle this however fits the flow of your app
+      }
+
+      console.log(`Login success with permissions: ${result.grantedPermissions.toString()}`);
+
+      // get the access token
+      const data = await AccessToken.getCurrentAccessToken();
+
+      if (!data) {
+        throw new Error('Something went wrong obtaining the users access token'); // Handle this however fits the flow of your app
+      }
+
+      // create a new firebase credential with the token
+      const credential = firebase.auth.FacebookAuthProvider.credential(data.accessToken);
+
+      // login with credential
+      const currentUser = await firebaseApp.auth().signInAndRetrieveDataWithCredential(credential);
+
+      console.info(JSON.stringify(currentUser.user.toJSON()));
+      this.setState({
+        isLoggedIn: true
+      })
+
+      // find user in Firestore OR save new user information
+      // think about what else to store about the user
+
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  googleLogin = async () => {
+    try {
+      // Add any configuration settings here:
+      await GoogleSignin.configure();
+
+      const data = await GoogleSignin.signIn();
+      console.log("1");
+
+      // create a new firebase credential with the token
+      const credential = firebase.auth.GoogleAuthProvider.credential(data.idToken, data.accessToken)
+      console.log("2");
+
+      // login with credential
+      const currentUser = await firebaseApp.auth().signInAndRetrieveDataWithCredential(credential);
+      console.log("3");
+
+      console.info(JSON.stringify(currentUser.user.toJSON()));
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
   render() {
     const screenProps = {
-      facebookLogin: () => facebookLogin(),
-      googleLogin: () => googleLogin()
+      facebookLogin: () => this.facebookLogin(),
+      googleLogin: () => this.googleLogin()
     }
 
     return (

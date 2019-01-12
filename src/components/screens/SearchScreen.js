@@ -3,7 +3,14 @@ import { View, Text, StyleSheet } from 'react-native';
 
 class SearchScreen extends Component {
     static navigationOptions = {
-        title: "Search",
+        title: 'Search',
+        headerStyle: {
+            backgroundColor: '#f4511e',
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+            fontWeight: 'bold',
+        },
     };
 
     render(){

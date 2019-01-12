@@ -5,7 +5,14 @@ import { Button } from 'react-native-elements';
 
 class SettingsScreen extends Component {
     static navigationOptions = {
-        title: "Settings",
+        title: 'Settings',
+        headerStyle: {
+            backgroundColor: '#f4511e',
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+            fontWeight: 'bold',
+        },
     };
 
     render(){

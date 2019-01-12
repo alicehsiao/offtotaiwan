@@ -4,7 +4,14 @@ import { Button } from 'react-native-elements';
 
 class HomeScreen extends Component {
     static navigationOptions = {
-        title: "Home",
+        title: 'Home',
+        headerStyle: {
+            backgroundColor: '#f4511e',
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+            fontWeight: 'bold',
+        },
     };
 
     render(){
@@ -26,7 +33,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center',
+        alignItems: 'center'
     }
 });
 

@@ -3,7 +3,14 @@ import { View, Text, StyleSheet } from 'react-native';
 
 class HeartScreen extends Component {
     static navigationOptions = {
-        title: "Favorites",
+        title: 'Favorites',
+        headerStyle: {
+            backgroundColor: '#f4511e',
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+            fontWeight: 'bold',
+        },
     };
 
     render(){

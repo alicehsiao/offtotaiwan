@@ -57,3 +57,7 @@ buck-out/
 
 .env
 .eslintrc
+
+ios/offtotaiwan/GoogleService-Info.plist
+
+config/off-to-taiwan-key.json

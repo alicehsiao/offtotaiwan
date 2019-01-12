@@ -49,12 +49,13 @@
 		8798CECA093C4413ACEA1D4F /* Roboto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 968550F4EE7B4039925F2B76 /* Roboto.ttf */; };
 		8EAAB08678404D90AF5CF4BA /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3B24D4393C446CB8B70962C /* Octicons.ttf */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
-		B059C5B321E91DF80013A5A4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B059C58A21E91DF80013A5A4 /* GoogleService-Info.plist */; };
 		B07A6BF621E6CAEF00977E8B /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B07A6BF321E6CAD300977E8B /* libReactNativeConfig.a */; };
 		B0A5402621E800CF00F48A57 /* libRCTFBSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B0A53FED21E8003D00F48A57 /* libRCTFBSDK.a */; };
 		B0A5402821E800D800F48A57 /* libFBSDKCoreKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B0A5402721E800D800F48A57 /* libFBSDKCoreKit.a */; };
 		B0A5402A21E800DD00F48A57 /* libFBSDKLoginKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B0A5402921E800DD00F48A57 /* libFBSDKLoginKit.a */; };
 		B0A5402C21E800E200F48A57 /* libFBSDKShareKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B0A5402B21E800E200F48A57 /* libFBSDKShareKit.a */; };
+		B0F6A7EE21EA4CD100AA67C2 /* libSplashScreen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F6A7ED21EA4CBA00AA67C2 /* libSplashScreen.a */; };
+		B0F6A86421EA528C00AA67C2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B0F6A86321EA528C00AA67C2 /* GoogleService-Info.plist */; };
 		B3F804256B7948668841BEFB /* libRNGoogleSignin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 70681EF0DEF34481BFD9DEDA /* libRNGoogleSignin.a */; };
 		BDD30EAAC40743E99003D1F6 /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 19C3ABEBD9B04B799C525B6F /* FontAwesome5_Solid.ttf */; };
 		D00F8CAE3CFC413C8001BFA8 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3333E0BF180842C28BE814B4 /* FontAwesome.ttf */; };
@@ -375,6 +376,13 @@
 			remoteGlobalIDString = 9350E0F11CE3B0920041D815;
 			remoteInfo = RCTFBSDK;
 		};
+		B0F6A7EC21EA4CBA00AA67C2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B0F6A7C021EA4CBA00AA67C2 /* SplashScreen.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3D7682761D8E76B80014119E;
+			remoteInfo = SplashScreen;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -421,13 +429,14 @@
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		AE6CDEBEE4C34CCEAE4EA668 /* rubicon-icon-font.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "rubicon-icon-font.ttf"; path = "../node_modules/native-base/Fonts/rubicon-icon-font.ttf"; sourceTree = "<group>"; };
 		AFF681D63F794971AC62842C /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
-		B059C58A21E91DF80013A5A4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B07A6BC821E6CAD300977E8B /* ReactNativeConfig.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeConfig.xcodeproj; path = "../node_modules/react-native-config/ios/ReactNativeConfig.xcodeproj"; sourceTree = "<group>"; };
 		B0A53FE721E7FFA700F48A57 /* offtotaiwan.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = offtotaiwan.entitlements; path = offtotaiwan/offtotaiwan.entitlements; sourceTree = "<group>"; };
 		B0A53FE821E8003D00F48A57 /* RCTFBSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTFBSDK.xcodeproj; path = "../node_modules/react-native-fbsdk/ios/RCTFBSDK.xcodeproj"; sourceTree = "<group>"; };
 		B0A5402721E800D800F48A57 /* libFBSDKCoreKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libFBSDKCoreKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0A5402921E800DD00F48A57 /* libFBSDKLoginKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libFBSDKLoginKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0A5402B21E800E200F48A57 /* libFBSDKShareKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libFBSDKShareKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0F6A7C021EA4CBA00AA67C2 /* SplashScreen.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SplashScreen.xcodeproj; path = "../node_modules/react-native-splash-screen/ios/SplashScreen.xcodeproj"; sourceTree = "<group>"; };
+		B0F6A86321EA528C00AA67C2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../keys - api/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B9D9BB828B304397961E4A7E /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
 		C3B24D4393C446CB8B70962C /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		D1CB022904B3471F8F541311 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
@@ -449,6 +458,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0F6A7EE21EA4CD100AA67C2 /* libSplashScreen.a in Frameworks */,
 				B0A5402C21E800E200F48A57 /* libFBSDKShareKit.a in Frameworks */,
 				B0A5402A21E800DD00F48A57 /* libFBSDKLoginKit.a in Frameworks */,
 				B0A5402821E800D800F48A57 /* libFBSDKCoreKit.a in Frameworks */,
@@ -588,7 +598,7 @@
 		13B07FAE1A68108700A75B9A /* offtotaiwan */ = {
 			isa = PBXGroup;
 			children = (
-				B059C58A21E91DF80013A5A4 /* GoogleService-Info.plist */,
+				B0F6A86321EA528C00AA67C2 /* GoogleService-Info.plist */,
 				B0A53FE721E7FFA700F48A57 /* offtotaiwan.entitlements */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
@@ -657,6 +667,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				B0F6A7C021EA4CBA00AA67C2 /* SplashScreen.xcodeproj */,
 				B0A53FE821E8003D00F48A57 /* RCTFBSDK.xcodeproj */,
 				B07A6BC821E6CAD300977E8B /* ReactNativeConfig.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
@@ -776,6 +787,14 @@
 			isa = PBXGroup;
 			children = (
 				B0A53FED21E8003D00F48A57 /* libRCTFBSDK.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B0F6A7C121EA4CBA00AA67C2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B0F6A7ED21EA4CBA00AA67C2 /* libSplashScreen.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -962,6 +981,10 @@
 				{
 					ProductGroup = B0490C3521E8165D0059376A /* Products */;
 					ProjectRef = 289E55D1B4134588964C655C /* RNGoogleSignin.xcodeproj */;
+				},
+				{
+					ProductGroup = B0F6A7C121EA4CBA00AA67C2 /* Products */;
+					ProjectRef = B0F6A7C021EA4CBA00AA67C2 /* SplashScreen.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -1262,6 +1285,13 @@
 			remoteRef = B0A53FEC21E8003D00F48A57 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		B0F6A7ED21EA4CBA00AA67C2 /* libSplashScreen.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSplashScreen.a;
+			remoteRef = B0F6A7EC21EA4CBA00AA67C2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -1296,7 +1326,7 @@
 				F306FF3FAA6F44AEB3740444 /* Roboto_medium.ttf in Resources */,
 				8798CECA093C4413ACEA1D4F /* Roboto.ttf in Resources */,
 				0699D78871B848D2815059B8 /* rubicon-icon-font.ttf in Resources */,
-				B059C5B321E91DF80013A5A4 /* GoogleService-Info.plist in Resources */,
+				B0F6A86421EA528C00AA67C2 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1566,6 +1596,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/RNGoogleSignin",
+					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 				);
 				INFOPLIST_FILE = offtotaiwan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1600,6 +1631,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/RNGoogleSignin",
+					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 				);
 				INFOPLIST_FILE = offtotaiwan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

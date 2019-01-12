@@ -3,7 +3,14 @@ import { View, Text, StyleSheet } from 'react-native';
 
 class EventsScreen extends Component {
     static navigationOptions = {
-        title: "Events",
+        title: 'Events',
+        headerStyle: {
+            backgroundColor: '#f4511e',
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+            fontWeight: 'bold',
+        },
     };
 
     render(){

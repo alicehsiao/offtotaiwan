@@ -6,14 +6,14 @@ import firebaseApp from '../config/firebase';
 import firebase from 'firebase';
 import { LoginManager, AccessToken } from 'react-native-fbsdk';
 import { GoogleSignin } from 'react-native-google-signin';
-
+import SplashScreen from "react-native-splash-screen";
 class App extends Component {
   state = {
     isLoggedIn: false
   }
 
   componentDidMount(){
-
+    SplashScreen.hide();
   }
 
   facebookLogin = async () => {
@@ -76,12 +76,12 @@ class App extends Component {
 
   render() {
     const screenProps = {
-      facebookLogin: () => this.facebookLogin(),
-      googleLogin: () => this.googleLogin()
+      facebookLogin: this.facebookLogin,
+      googleLogin: this.googleLogin
     }
 
     return (
-      <Router screenProps={screenProps}/>
+      <Router screenProps={screenProps} />
     )
   }
 }

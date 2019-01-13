@@ -8,6 +8,8 @@ import firebase from 'firebase';
 import { LoginManager, AccessToken } from 'react-native-fbsdk';
 import { GoogleSignin } from 'react-native-google-signin';
 import SplashScreen from "react-native-splash-screen";
+import { db } from '../config/firebase';
+import NavigationService from './NavigationService';
 class App extends Component {
   state = {
     isLoggedIn: false,
@@ -22,7 +24,7 @@ class App extends Component {
       const value = await AsyncStorage.getItem('user');
       if (value !== null) {
         const data = JSON.parse(value);
-        console.log(data.user.displayName);
+        console.log(data.user.displayName); // delete this later
         this.setState({
           isLoggedIn: true,
           name: data.user.displayName,
@@ -39,22 +41,17 @@ class App extends Component {
   facebookLogin = async () => {
     try {
       const result = await LoginManager.logInWithReadPermissions(['public_profile', 'email']);
-
       if (result.isCancelled) {
-        throw new Error('User cancelled request'); // Handle this however fits the flow of your app
+        NavigationService.navigate('Home');
+        return;
       }
 
-      // get the access token
       const data = await AccessToken.getCurrentAccessToken();
-
       if (!data) {
-        throw new Error('Something went wrong obtaining the users access token'); // Handle this however fits the flow of your app
+        alert('Unfortunately, we are unable to log you in at this moment');
       }
 
-      // create a new firebase credential with the token
       const credential = firebase.auth.FacebookAuthProvider.credential(data.accessToken);
-
-      // login with credential
       const currentUser = await firebaseApp.auth().signInAndRetrieveDataWithCredential(credential);
 
       await AsyncStorage.setItem('user', JSON.stringify(currentUser));
@@ -66,8 +63,16 @@ class App extends Component {
         }
       })
 
+      NavigationService.navigate('Home');
       // find user in Firestore OR save new user information
-      // think about what else to store about the user
+      // firebase.database().ref().child("users").orderByChild("username").equalTo(username_here).on("value", function (snapshot) {
+      //   if (snapshot.exists()) {
+      //     console.log("exists");
+      //   } else {
+      //     console.log("doesn't exist");
+      //   }
+      // });
+
 
     } catch (e) {
       console.error(e);
@@ -124,14 +129,12 @@ class App extends Component {
     }
 
     return (
-      <Router screenProps={screenProps} />
+      <Router screenProps={screenProps}/>
     )
   }
 }
 
 export default App;
-
-
 
 
 

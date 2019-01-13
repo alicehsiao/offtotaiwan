@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Button  } from 'react-native';
+import NavigationService from '../../NavigationService';
 
 class HeartScreen extends Component {
     static navigationOptions = {
@@ -17,6 +18,11 @@ class HeartScreen extends Component {
         return(
             <View style={styles.container}>
                 <Text>Heart Screen</Text>
+                <Button
+                    title = "Go Home"
+                    onPress = {
+                        () => NavigationService.navigate('Home')
+                }/>
             </View>
         )
     }

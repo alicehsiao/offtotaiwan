@@ -6,7 +6,14 @@ import axios from 'axios';
 
 class FoodJointScreen extends Component {
     static navigationOptions = {
-        title: "Food Joints",
+        title: 'Food Joints',
+        headerStyle: {
+            backgroundColor: '#f4511e',
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+            fontWeight: 'bold',
+        },
     };
 
     state = {
@@ -14,8 +21,8 @@ class FoodJointScreen extends Component {
     };
 
     componentDidMount() {
-        // const URL = 'http://192.168.0.11:7777/api/v1/tests';
-        const URL = 'http://172.24.25.128:7777/api/v1/tests';
+        const URL = 'http://192.168.0.11:7777/api/v1/tests';
+        // const URL = 'http://172.24.25.128:7777/api/v1/tests';
         axios.get(URL)
             .then(response => {
                 this.setState({

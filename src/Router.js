@@ -5,6 +5,7 @@ import { createBottomTabNavigator, createStackNavigator, createAppContainer } fr
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import DetailsScreen from './components/screens/DetailsScreen';
 import FoodJointScreen from './components/screens/FoodJointScreen';
+import NavigationService from './NavigationService';
 // import PropTypes from 'prop-types';
 import {
   HomeScreen,
@@ -23,7 +24,9 @@ class Router extends Component {
         facebookLogOut: this.props.screenProps.facebookLogOut
     }
     return (
-      <AppContainer screenProps={screenProps}/>
+      <AppContainer screenProps={screenProps} ref={ navigatorRef => {
+        NavigationService.setTopLevelNavigator(navigatorRef);
+      }}/>
     )
   }
 }

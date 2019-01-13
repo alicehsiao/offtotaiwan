@@ -6,7 +6,7 @@ import Router from './Router';
 import firebaseApp from '../config/firebase';
 import firebase from 'firebase';
 import { LoginManager, AccessToken } from 'react-native-fbsdk';
-import { GoogleSignin } from 'react-native-google-signin';
+import { GoogleSignin, statusCodes } from 'react-native-google-signin';
 import SplashScreen from "react-native-splash-screen";
 import { db } from '../config/firebase';
 import NavigationService from './NavigationService';
@@ -23,7 +23,6 @@ class App extends Component {
   async componentDidMount(){
     try {
       const value = await AsyncStorage.getItem('user');
-      console.log(value);
       if (value !== null) {
         const data = JSON.parse(value);
 
@@ -35,8 +34,6 @@ class App extends Component {
             email: data.email
           }
         })
-
-        console.log(this.state.user);
       }
     } catch (error) {
       console.log('Error Retrieving Data');
@@ -61,6 +58,7 @@ class App extends Component {
       const credential = firebase.auth.FacebookAuthProvider.credential(data.accessToken);
       const currentUser = await firebaseApp.auth().signInAndRetrieveDataWithCredential(credential);
 
+      // Set User Info - TODO - Find User in DB to Set Hearts ([] if new user)
       await AsyncStorage.setItem('user', JSON.stringify(currentUser.user));
       this.setState({
         isLoggedIn: true,
@@ -81,7 +79,6 @@ class App extends Component {
       //   }
       // });
 
-
     } catch (e) {
       console.error(e);
     }
@@ -92,11 +89,11 @@ class App extends Component {
       await GoogleSignin.configure();
 
       const data = await GoogleSignin.signIn();
-      const credential = firebase.auth.GoogleAuthProvider.credential(data.idToken, data.accessToken)
+      const credential = firebase.auth.GoogleAuthProvider.credential(data.idToken, data.accessToken);
       let currentUser = await firebaseApp.auth().signInAndRetrieveDataWithCredential(credential);
 
+      // Set User Info - TODO - Find User in DB to set Hearts ([] if new user)
       await AsyncStorage.setItem('user', JSON.stringify(currentUser.user));
-
       this.setState({
         isLoggedIn: true,
         user: {
@@ -106,24 +103,31 @@ class App extends Component {
       })
 
       NavigationService.navigate('Home');
-    } catch (e) {
-      console.error(e);
+    } catch (error) {
+        if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+          NavigationService.navigate('Home');
+        } else if (error.code === statusCodes.IN_PROGRESS) {
+          alert('Google Sign In is already in progress');
+        } else {
+          console.log(error);
+        }
     }
   }
 
   logOut = async () => {
     try {
+      // Facebook Sign Out
       await LoginManager.logOut();
-      console.log("1");
-      // await GoogleSignin.revokeAccess();
-      console.log("2");
-      // await GoogleSignin.signOut();
-      console.log("3");
+
+      // Google Sign Out
+      await GoogleSignin.revokeAccess();
+      await GoogleSignin.signOut();
+
+      // Firebase Sign Out
       await firebaseApp.auth().signOut();
+
+      // Reset User
       await AsyncStorage.removeItem('user');
-
-      console.log("Logged Out");
-
       this.setState({
         isLoggedIn: false,
         user: {
@@ -131,7 +135,7 @@ class App extends Component {
           email: "",
           hearts: []
         }
-      })
+      });
     } catch (e) {
       console.error(e);
     }

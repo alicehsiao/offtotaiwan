@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /**
  * Sample React Native App
  * https://github.com/facebook/react-native
@@ -20,8 +21,8 @@ export default class App extends Component {
 
     this.state = {
       user: {
-        name: 'Alice',
-        email: 'alice@gmail.com'
+        name: 'Laura',
+        email: 'laura@gmail.com'
       }
     };
   }
@@ -29,17 +30,45 @@ export default class App extends Component {
   componentDidMount() {
     SplashScreen.hide();
   }
+// ref.child('users').child('123').set({
+//   "first_name": "rob",
+//   "age": 28
+// })
 
+  escapeEmailAddress = (email) => {
+    if (!email) return false
 
+    // Replace '.' (not allowed in a Firebase key) with ',' (not allowed in an email address)
+    email = email.toLowerCase();
+    email = email.replace(/\./g, ',');
+    return email;
+  }
 
   addUser = (name, email) => {
-    db.ref('users').push({
+    const user = db.ref('users').child(this.escapeEmailAddress(email));
+    user.set({
       name,
-      email
+      email,
     }).then(data => {
       console.log(data);
     })
+    // db.ref('users').push({
+    //   name,
+    //   email,
+    // }).then(data => {
+    //   console.log(data);
+    // })
   }
+
+
+ findUserInDatabase = (email) => {
+   const doesExist = db.ref().child("users").orderByChild("email").equalTo(email).once("value").then(function(snapshot) {
+     if (snapshot.exists()) {
+       return snapshot.val();
+     }
+   });
+   console.log(doesExist);
+ }
 
   // This gets all users
   readUser = () => {
@@ -59,12 +88,6 @@ export default class App extends Component {
       })
   }
 
-  // var userId = firebase.auth().currentUser.uid;
-  // return firebase.database().ref('/users/' + userId).once('value').then(function (snapshot) {
-  //   var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
-  //   // ...
-  // });
-
   render() {
 
     return (
@@ -77,9 +100,9 @@ export default class App extends Component {
           }
         />
         < Button
-          title = "Read user"
+          title = "Find user"
           onPress = {
-            () => this.doesUserExist()
+            () => this.findUserInDatabase("laura@gmail.com")
           }
         />
       </View>

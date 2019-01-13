@@ -16,7 +16,8 @@ class App extends Component {
     user: {
       name: '',
       email: '',
-      hearts: []
+      hearts: [],
+      provider: ''
     }
   }
 
@@ -24,16 +25,11 @@ class App extends Component {
     try {
       const value = await AsyncStorage.getItem('user');
       if (value !== null) {
+        console.log("User is Logged In");
         const data = JSON.parse(value);
-
-        // TODO: find the user in DB and set their hearts
-        this.setState({
-          isLoggedIn: true,
-          user: {
-            name: data.displayName,
-            email: data.email
-          }
-        })
+        await this.findUserInDatabase(data.name, data.email, data.provider);
+      } else {
+        console.log("User is Not Logged In");
       }
     } catch (error) {
       console.log('Error Retrieving Data');
@@ -41,6 +37,43 @@ class App extends Component {
 
     SplashScreen.hide();
   }
+
+   findUserInDatabase = async (name, email, provider) => {
+     // TODO: Handle the case where the same email matches, but different providers
+     await db.ref().child("users").orderByChild("email").equalTo(email).once("value", async (snapshot) => {
+       if (snapshot.exists()) {
+         // User exists in DB
+         snapshot.forEach(childSnapshot => {
+           var data = childSnapshot.val();
+           this.setState({
+             user: {
+                name: data.name,
+                email: data.email,
+                hearts: data.hearts || []
+             },
+             isLoggedIn: true,
+             provider,
+           })
+         })
+       } else {
+         // Create New User
+          await db.ref('users').push({
+            name,
+            email,
+            provider,
+          }).then(() => {
+            this.setState({
+              user: {
+                name,
+                email,
+                provider,
+              },
+              isLoggedIn: true
+            })
+          })
+       }
+     });
+   }
 
   facebookLogin = async () => {
     try {
@@ -58,27 +91,11 @@ class App extends Component {
       const credential = firebase.auth.FacebookAuthProvider.credential(data.accessToken);
       const currentUser = await firebaseApp.auth().signInAndRetrieveDataWithCredential(credential);
 
-      // Set User Info - TODO - Find User in DB to Set Hearts ([] if new user)
+      await this.findUserInDatabase(currentUser.user.displayName, currentUser.user.email, "facebook");
+
       await AsyncStorage.setItem('user', JSON.stringify(currentUser.user));
-      this.setState({
-        isLoggedIn: true,
-        user: {
-          name: currentUser.user.displayName,
-          email: currentUser.user.email,
-        }
-      })
 
       NavigationService.navigate('Home');
-      // TODO: find user in Firestore OR save new user information
-      // add hearts to set state above
-      // firebase.database().ref().child("users").orderByChild("username").equalTo(username_here).on("value", function (snapshot) {
-      //   if (snapshot.exists()) {
-      //     console.log("exists");
-      //   } else {
-      //     console.log("doesn't exist");
-      //   }
-      // });
-
     } catch (e) {
       console.error(e);
     }
@@ -92,15 +109,8 @@ class App extends Component {
       const credential = firebase.auth.GoogleAuthProvider.credential(data.idToken, data.accessToken);
       let currentUser = await firebaseApp.auth().signInAndRetrieveDataWithCredential(credential);
 
-      // Set User Info - TODO - Find User in DB to set Hearts ([] if new user)
+      await this.findUserInDatabase(currentUser.user.displayName, currentUser.user.email, "google");
       await AsyncStorage.setItem('user', JSON.stringify(currentUser.user));
-      this.setState({
-        isLoggedIn: true,
-        user: {
-          name: currentUser.user.displayName,
-          email: currentUser.user.email,
-        }
-      })
 
       NavigationService.navigate('Home');
     } catch (error) {
@@ -116,12 +126,16 @@ class App extends Component {
 
   logOut = async () => {
     try {
-      // Facebook Sign Out
-      await LoginManager.logOut();
 
-      // Google Sign Out
-      await GoogleSignin.revokeAccess();
-      await GoogleSignin.signOut();
+      switch(this.state.provider) {
+        case "facebook":
+          await LoginManager.logOut();
+          break;
+        case "google":
+          await GoogleSignin.revokeAccess();
+          await GoogleSignin.signOut();
+          break;
+      }
 
       // Firebase Sign Out
       await firebaseApp.auth().signOut();
@@ -133,11 +147,12 @@ class App extends Component {
         user: {
           name: "",
           email: "",
-          hearts: []
+          hearts: [],
+          provider: ""
         }
       });
-    } catch (e) {
-      console.error(e);
+    } catch (error) {
+      console.log(error);
     }
   }
 

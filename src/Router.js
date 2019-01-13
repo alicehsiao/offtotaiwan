@@ -21,7 +21,7 @@ class Router extends Component {
         facebookLogin: this.props.screenProps.facebookLogin,
         googleLogin: this.props.screenProps.googleLogin,
         isLoggedIn: this.props.screenProps.isLoggedIn,
-        facebookLogOut: this.props.screenProps.facebookLogOut
+        logOut: this.props.screenProps.logOut
     }
     return (
       <AppContainer screenProps={screenProps} ref={ navigatorRef => {

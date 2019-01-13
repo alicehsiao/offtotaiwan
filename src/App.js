@@ -15,21 +15,28 @@ class App extends Component {
     isLoggedIn: false,
     user: {
       name: '',
-      email: ''
+      email: '',
+      hearts: []
     }
   }
 
   async componentDidMount(){
     try {
       const value = await AsyncStorage.getItem('user');
+      console.log(value);
       if (value !== null) {
         const data = JSON.parse(value);
-        console.log(data.user.displayName); // delete this later
+
+        // TODO: find the user in DB and set their hearts
         this.setState({
           isLoggedIn: true,
-          name: data.user.displayName,
-          email: data.user.email
+          user: {
+            name: data.displayName,
+            email: data.email
+          }
         })
+
+        console.log(this.state.user);
       }
     } catch (error) {
       console.log('Error Retrieving Data');
@@ -54,17 +61,18 @@ class App extends Component {
       const credential = firebase.auth.FacebookAuthProvider.credential(data.accessToken);
       const currentUser = await firebaseApp.auth().signInAndRetrieveDataWithCredential(credential);
 
-      await AsyncStorage.setItem('user', JSON.stringify(currentUser));
+      await AsyncStorage.setItem('user', JSON.stringify(currentUser.user));
       this.setState({
         isLoggedIn: true,
         user: {
-          name: currentUser.displayName,
-          email: currentUser.email,
+          name: currentUser.user.displayName,
+          email: currentUser.user.email,
         }
       })
 
       NavigationService.navigate('Home');
-      // find user in Firestore OR save new user information
+      // TODO: find user in Firestore OR save new user information
+      // add hearts to set state above
       // firebase.database().ref().child("users").orderByChild("username").equalTo(username_here).on("value", function (snapshot) {
       //   if (snapshot.exists()) {
       //     console.log("exists");
@@ -79,9 +87,38 @@ class App extends Component {
     }
   }
 
-  facebookLogOut = async () => {
+  googleLogin = async () => {
+    try {
+      await GoogleSignin.configure();
+
+      const data = await GoogleSignin.signIn();
+      const credential = firebase.auth.GoogleAuthProvider.credential(data.idToken, data.accessToken)
+      let currentUser = await firebaseApp.auth().signInAndRetrieveDataWithCredential(credential);
+
+      await AsyncStorage.setItem('user', JSON.stringify(currentUser.user));
+
+      this.setState({
+        isLoggedIn: true,
+        user: {
+          name: currentUser.user.displayName,
+          email: currentUser.user.email,
+        }
+      })
+
+      NavigationService.navigate('Home');
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  logOut = async () => {
     try {
       await LoginManager.logOut();
+      console.log("1");
+      // await GoogleSignin.revokeAccess();
+      console.log("2");
+      // await GoogleSignin.signOut();
+      console.log("3");
       await firebaseApp.auth().signOut();
       await AsyncStorage.removeItem('user');
 
@@ -89,43 +126,24 @@ class App extends Component {
 
       this.setState({
         isLoggedIn: false,
-        name: "",
-        email: "",
+        user: {
+          name: "",
+          email: "",
+          hearts: []
+        }
       })
-
     } catch (e) {
       console.error(e);
     }
   }
 
-  googleLogin = async () => {
-    try {
-      // Add any configuration settings here:
-      await GoogleSignin.configure();
-
-      const data = await GoogleSignin.signIn();
-      console.log("1");
-
-      // create a new firebase credential with the token
-      const credential = firebase.auth.GoogleAuthProvider.credential(data.idToken, data.accessToken)
-      console.log("2");
-
-      // login with credential
-      const currentUser = await firebaseApp.auth().signInAndRetrieveDataWithCredential(credential);
-      console.log("3");
-
-      console.info(JSON.stringify(currentUser.user.toJSON()));
-    } catch (e) {
-      console.error(e);
-    }
-  }
 
   render() {
     const screenProps = {
       facebookLogin: this.facebookLogin,
       googleLogin: this.googleLogin,
       isLoggedIn: this.state.isLoggedIn,
-      facebookLogOut: this.facebookLogOut
+      logOut: this.logOut
     }
 
     return (

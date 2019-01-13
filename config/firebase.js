@@ -1,5 +1,6 @@
 import firebase from 'firebase';
-// import Rebase from 're-base';
+import Rebase from 're-base';
+
 import {
     FIREBASE_KEY,
     FIREBASE_AUTH_DOMAIN, 
@@ -13,7 +14,7 @@ const config = {
 };
 
 const app = firebase.initializeApp(config);
-// const base = Rebase.createClass(app.database());
+const db = app.database();
 
-// export { base };
+export { db };
 export default app;

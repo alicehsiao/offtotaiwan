@@ -18,7 +18,9 @@ class Router extends Component {
   render() {
     const screenProps = {
         facebookLogin: this.props.screenProps.facebookLogin,
-        googleLogin: this.props.screenProps.googleLogin
+        googleLogin: this.props.screenProps.googleLogin,
+        isLoggedIn: this.props.screenProps.isLoggedIn,
+        facebookLogOut: this.props.screenProps.facebookLogOut
     }
     return (
       <AppContainer screenProps={screenProps}/>

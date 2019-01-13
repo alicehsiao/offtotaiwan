@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/display-name */
 import React, { Component } from 'react';
+import { AsyncStorage } from 'react-native';
 import Router from './Router';
 import firebaseApp from '../config/firebase';
 import firebase from 'firebase';
@@ -9,10 +10,29 @@ import { GoogleSignin } from 'react-native-google-signin';
 import SplashScreen from "react-native-splash-screen";
 class App extends Component {
   state = {
-    isLoggedIn: false
+    isLoggedIn: false,
+    user: {
+      name: '',
+      email: ''
+    }
   }
 
-  componentDidMount(){
+  async componentDidMount(){
+    try {
+      const value = await AsyncStorage.getItem('user');
+      if (value !== null) {
+        const data = JSON.parse(value);
+        console.log(data.user.displayName);
+        this.setState({
+          isLoggedIn: true,
+          name: data.user.displayName,
+          email: data.user.email
+        })
+      }
+    } catch (error) {
+      console.log('Error Retrieving Data');
+    }
+
     SplashScreen.hide();
   }
 
@@ -23,8 +43,6 @@ class App extends Component {
       if (result.isCancelled) {
         throw new Error('User cancelled request'); // Handle this however fits the flow of your app
       }
-
-      console.log(`Login success with permissions: ${result.grantedPermissions.toString()}`);
 
       // get the access token
       const data = await AccessToken.getCurrentAccessToken();
@@ -39,13 +57,36 @@ class App extends Component {
       // login with credential
       const currentUser = await firebaseApp.auth().signInAndRetrieveDataWithCredential(credential);
 
-      console.info(JSON.stringify(currentUser.user.toJSON()));
+      await AsyncStorage.setItem('user', JSON.stringify(currentUser));
       this.setState({
-        isLoggedIn: true
+        isLoggedIn: true,
+        user: {
+          name: currentUser.displayName,
+          email: currentUser.email,
+        }
       })
 
       // find user in Firestore OR save new user information
       // think about what else to store about the user
+
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  facebookLogOut = async () => {
+    try {
+      await LoginManager.logOut();
+      await firebaseApp.auth().signOut();
+      await AsyncStorage.removeItem('user');
+
+      console.log("Logged Out");
+
+      this.setState({
+        isLoggedIn: false,
+        name: "",
+        email: "",
+      })
 
     } catch (e) {
       console.error(e);
@@ -77,7 +118,9 @@ class App extends Component {
   render() {
     const screenProps = {
       facebookLogin: this.facebookLogin,
-      googleLogin: this.googleLogin
+      googleLogin: this.googleLogin,
+      isLoggedIn: this.state.isLoggedIn,
+      facebookLogOut: this.facebookLogOut
     }
 
     return (

@@ -19,12 +19,18 @@ class SettingsScreen extends Component {
         return(
             <View style={styles.container}>
                 <Text>Settings Screen</Text>
-                <Button
+                {this.props.screenProps.isLoggedIn ? 
+                < Button
+                    title = "Logout of Facebook"
+                    onPress = {
+                        () => this.props.screenProps.facebookLogOut()
+                }
+                /> : <Button
                     title = "Login to Facebook"
                     onPress = {
                         () => this.props.screenProps.facebookLogin()
                     }
-                />
+                />}
                 <Button
                     title = "Login to Google"
                     onPress = {

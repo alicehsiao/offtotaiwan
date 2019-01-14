@@ -24,7 +24,7 @@ class UpcomingDetailScreen extends Component {
         const start = navigation.getParam('start', 'no start time');
         const end = navigation.getParam('end', 'no end time');
         const engName = navigation.getParam('engName', 'no english name');
-        const description = navigation.getParam('description', 'no description');
+        const description = navigation.getParam('engDescription', 'no description');
 
         const startDate = moment(start.toString()).format('L');
         const endDate = moment(end.toString()).format('L');
@@ -42,7 +42,7 @@ class UpcomingDetailScreen extends Component {
                     </View>
                     <View rkCardContent>
                         <View>
-                            <Text>{description === '無' ? 'No Description' : description}</Text>
+                            <Text>{description === 'no' ? 'No Description' : description}</Text>
                         </View>
                     </View>
                     <View rkCardFooter>

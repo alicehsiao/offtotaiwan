@@ -1,6 +1,7 @@
+/* eslint-disable react/prop-types */
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Button  } from 'react-native';
-import NavigationService from '../../NavigationService';
+import { View, Text, StyleSheet } from 'react-native';
+import { Card, SocialIcon, Button } from 'react-native-elements';
 
 class HeartScreen extends Component {
     static navigationOptions = {
@@ -15,14 +16,25 @@ class HeartScreen extends Component {
     };
 
     render(){
+        const { isLoggedIn, user, logOut, facebookLogin, googleLogin } = this.props.screenProps;
         return(
-            <View style={styles.container}>
-                <Text>Heart Screen</Text>
-                <Button
-                    title = "Go Home"
-                    onPress = {
-                        () => NavigationService.navigate('Home')
-                }/>
+            <View style={{alignItems: 'center'}}>
+                { isLoggedIn ?
+                     <Text>List of Favorites</Text>
+                     :
+                     <Card title="Login to Add Favorites!" containerStyle={{width: 300}}>
+                        <SocialIcon
+                            title = 'Sign In With Facebook'
+                            button
+                            type='facebook' 
+                            onPress = { () => facebookLogin()}/>
+                        <SocialIcon
+                            title = 'Sign In With Google'
+                            button
+                            type = 'google-plus-official'
+                            onPress = {() => googleLogin()}/>
+                     </Card>
+                }
             </View>
         )
     }

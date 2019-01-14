@@ -161,7 +161,8 @@ class App extends Component {
       facebookLogin: this.facebookLogin,
       googleLogin: this.googleLogin,
       isLoggedIn: this.state.isLoggedIn,
-      logOut: this.logOut
+      logOut: this.logOut,
+      user: this.state.user
     }
 
     return (

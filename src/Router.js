@@ -2,10 +2,11 @@
 /* eslint-disable react/display-name */
 import React, { Component } from 'react';
 import { StatusBar } from 'react-native';
-import { createBottomTabNavigator, createStackNavigator, createAppContainer } from 'react-navigation';
+import { createBottomTabNavigator, createStackNavigator, createAppContainer, StackActions } from 'react-navigation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import DetailsScreen from './components/screens/DetailsScreen';
 import FoodJointScreen from './components/screens/FoodJointScreen';
+import PlaceDetail from './components/screens/PlaceDetail';
 import NavigationService from './NavigationService';
 // import PropTypes from 'prop-types';
 import {
@@ -13,7 +14,8 @@ import {
   SettingsScreen,
   SearchScreen,
   HeartScreen,
-  EventsScreen
+  EventsScreen,
+  UpcomingDetailScreen
 } from './components/screens';
 
 class Router extends Component {
@@ -40,7 +42,7 @@ class Router extends Component {
 const HomeStack = createStackNavigator({
     Home: HomeScreen,
     FoodJoints: FoodJointScreen,
-    Details: DetailsScreen
+    Details: PlaceDetail
 });
 
 const SearchStack = createStackNavigator({
@@ -48,17 +50,13 @@ const SearchStack = createStackNavigator({
 });
 
 const EventsStack = createStackNavigator({
-  Events: EventsScreen
+  Events: EventsScreen,
+  Event: UpcomingDetailScreen
 });
 
 const HeartStack = createStackNavigator({
   Heart: HeartScreen
 });
-
-const SettingsStack = createStackNavigator({
-  Settings: SettingsScreen
-});
-
 
 
 const TabNavigator = createBottomTabNavigator(
@@ -66,8 +64,7 @@ const TabNavigator = createBottomTabNavigator(
         Home: HomeStack,
         Search: SearchStack,
         Heart: HeartStack,
-        Events: EventsStack,
-        Settings: SettingsStack
+        Events: EventsStack
     },
     {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -78,9 +75,6 @@ const TabNavigator = createBottomTabNavigator(
         switch(routeName) {
           case "Home":
             iconName = `ios-information-circle`;
-            break;
-          case "Settings":
-            iconName = `ios-options`;
             break;
           case "Heart":
             iconName = `ios-heart`;
@@ -96,6 +90,10 @@ const TabNavigator = createBottomTabNavigator(
         // You can return any component that you like here!
         return <IconComponent name={iconName} size={25} color={tintColor} />;
       },
+      headerStyle: {
+        backgroundColor: '#ac0d42'
+      },
+      headerTintColor: '#fff'
     }),
     tabBarOptions: {
       activeTintColor: '#ac0d42',

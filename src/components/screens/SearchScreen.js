@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
-import {SearchBar} from 'react-native-elements';
+import { SearchBar } from 'react-native-elements';
 import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
-
 class SearchScreen extends Component {
     static navigationOptions = {
         title: 'Search',
@@ -12,7 +11,7 @@ class SearchScreen extends Component {
         headerTintColor: '#fff',
         headerTitleStyle: {
             fontWeight: 'bold',
-        },
+        }
     };
 
     constructor(props){

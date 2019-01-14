@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { Container, Tab, Tabs } from 'native-base';
+import UpcomingScreen from './UpcomingScreen';
+import NearMeScreen from './events/NearMeScreen';
+
 
 class EventsScreen extends Component {
     static navigationOptions = {
@@ -10,24 +13,23 @@ class EventsScreen extends Component {
         headerTintColor: '#fff',
         headerTitleStyle: {
             fontWeight: 'bold',
-        },
+        }
     };
 
     render(){
-        return(
-            <View style={styles.container}>
-                <Text>Events Screen</Text>
-            </View>
-        )
+        return (
+            <Container>
+                <Tabs>
+                    <Tab heading="Upcoming">
+                        <UpcomingScreen />
+                    </Tab>
+                    <Tab heading="Near Me">
+                        <NearMeScreen />
+                    </Tab>
+                </Tabs>
+            </Container>
+        );
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    }
-});
 
 export { EventsScreen };

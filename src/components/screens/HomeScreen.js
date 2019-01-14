@@ -5,6 +5,7 @@ import { View, Image, TouchableHighlight, StyleSheet } from 'react-native';
 import { Container, Header } from 'native-base';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import NavigationService from '../../NavigationService';
+import { Icon } from 'react-native-elements';
 
 class HomeScreen extends Component {
     static navigationOptions = {
@@ -16,6 +17,15 @@ class HomeScreen extends Component {
         headerTitleStyle: {
             fontWeight: 'bold',
         },
+        headerRight: (
+            <Icon
+                onPress={()=>NavigationService.navigate('Settings')}
+                name='ios-settings'
+                type='ionicon'
+                color='#fff'
+                containerStyle={{paddingRight: 15}}
+            />
+        )
     };
 
     render() {

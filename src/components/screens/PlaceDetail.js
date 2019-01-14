@@ -2,10 +2,22 @@
 import React from 'react';
 import { Text, View, Button} from 'react-native';
 import { CardSection, Card } from '../common';
+import { Icon } from 'react-native-elements';
 // import axios from 'axios';
 // import { GOOGLE_API_KEY } from 'react-native-dotenv';
 
 class PlaceDetail extends React.Component {
+    static navigationOptions = {
+        title: 'Place Details',
+        headerStyle: {
+            backgroundColor: '#ac0d42',
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+            fontWeight: 'bold',
+        },
+    };
+
     state = {
         engAddress: '',
         coordinate: [],
@@ -24,20 +36,28 @@ class PlaceDetail extends React.Component {
     }
 
     render(){
-        const { name, region, phone, address } = this.props.place;
+        // const { name, region, phone, address } = this.props.place;
         const { headerContentStyle, headerTextStyle, textDetailsStyle } = styles;
         return (
             <Card>
                 <CardSection>
                     <View style={headerContentStyle}>
-                        <Text style={headerTextStyle}>{name}</Text>
-                        <Text>Address: {address}</Text>
+                        <Text style={headerTextStyle}>Alice's Restaurant</Text>
+                        <Text>Address: 999 Hiawatha Pl S</Text>
+                    </View>
+                    <View style={{justifyContent: "flex-end", alignItems: "center"}}>
+                        <Icon
+                            name='ios-heart-empty'
+                            type='ionicon'
+                            color='#517fa4'
+                            onPress={()=>alert('Hearted')}
+                        />
                     </View>
                 </CardSection>
                 <CardSection>
                     <View style={textDetailsStyle}>
-                        <Text>Region: {region}</Text>
-                        <Text>Phone: {phone}</Text>
+                        <Text>Region: Seattle</Text>
+                        <Text>Phone: 626-823-8691</Text>
                     </View>
                 </CardSection>
                 <CardSection>

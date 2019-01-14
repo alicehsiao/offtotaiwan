@@ -12,7 +12,7 @@ class HeartScreen extends Component {
         headerTintColor: '#fff',
         headerTitleStyle: {
             fontWeight: 'bold',
-        },
+        }
     };
 
     render(){

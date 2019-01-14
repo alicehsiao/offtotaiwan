@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/display-name */
 import React, { Component } from 'react';
+import { StatusBar } from 'react-native';
 import { createBottomTabNavigator, createStackNavigator, createAppContainer } from 'react-navigation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import DetailsScreen from './components/screens/DetailsScreen';
@@ -16,6 +17,9 @@ import {
 } from './components/screens';
 
 class Router extends Component {
+  componentDidMount() {
+    StatusBar.setBarStyle('light-content');
+  }
   render() {
     const screenProps = {
         facebookLogin: this.props.screenProps.facebookLogin,
@@ -93,7 +97,7 @@ const TabNavigator = createBottomTabNavigator(
       },
     }),
     tabBarOptions: {
-      activeTintColor: 'tomato',
+      activeTintColor: '#ac0d42',
       inactiveTintColor: 'gray',
     },
   }

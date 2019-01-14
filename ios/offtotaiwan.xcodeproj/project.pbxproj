@@ -50,6 +50,7 @@
 		8EAAB08678404D90AF5CF4BA /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3B24D4393C446CB8B70962C /* Octicons.ttf */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		B07A6BF621E6CAEF00977E8B /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B07A6BF321E6CAD300977E8B /* libReactNativeConfig.a */; };
+		B09F722321EBFD16008E6118 /* TaiwanImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B09F722221EBFD16008E6118 /* TaiwanImages.xcassets */; };
 		B0A5402621E800CF00F48A57 /* libRCTFBSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B0A53FED21E8003D00F48A57 /* libRCTFBSDK.a */; };
 		B0A5402821E800D800F48A57 /* libFBSDKCoreKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B0A5402721E800D800F48A57 /* libFBSDKCoreKit.a */; };
 		B0A5402A21E800DD00F48A57 /* libFBSDKLoginKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B0A5402921E800DD00F48A57 /* libFBSDKLoginKit.a */; };
@@ -430,6 +431,7 @@
 		AE6CDEBEE4C34CCEAE4EA668 /* rubicon-icon-font.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "rubicon-icon-font.ttf"; path = "../node_modules/native-base/Fonts/rubicon-icon-font.ttf"; sourceTree = "<group>"; };
 		AFF681D63F794971AC62842C /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
 		B07A6BC821E6CAD300977E8B /* ReactNativeConfig.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeConfig.xcodeproj; path = "../node_modules/react-native-config/ios/ReactNativeConfig.xcodeproj"; sourceTree = "<group>"; };
+		B09F722221EBFD16008E6118 /* TaiwanImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = TaiwanImages.xcassets; sourceTree = "<group>"; };
 		B0A53FE721E7FFA700F48A57 /* offtotaiwan.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = offtotaiwan.entitlements; path = offtotaiwan/offtotaiwan.entitlements; sourceTree = "<group>"; };
 		B0A53FE821E8003D00F48A57 /* RCTFBSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTFBSDK.xcodeproj; path = "../node_modules/react-native-fbsdk/ios/RCTFBSDK.xcodeproj"; sourceTree = "<group>"; };
 		B0A5402721E800D800F48A57 /* libFBSDKCoreKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libFBSDKCoreKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -598,6 +600,7 @@
 		13B07FAE1A68108700A75B9A /* offtotaiwan */ = {
 			isa = PBXGroup;
 			children = (
+				B09F722221EBFD16008E6118 /* TaiwanImages.xcassets */,
 				B0F6A86321EA528C00AA67C2 /* GoogleService-Info.plist */,
 				B0A53FE721E7FFA700F48A57 /* offtotaiwan.entitlements */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
@@ -1309,6 +1312,7 @@
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				DB8E1C75D38F44FCB0761774 /* AntDesign.ttf in Resources */,
+				B09F722321EBFD16008E6118 /* TaiwanImages.xcassets in Resources */,
 				1A3C5853EAEF46E7AD705628 /* Entypo.ttf in Resources */,
 				59EBEC9B79D44B63BF4FF373 /* EvilIcons.ttf in Resources */,
 				D27D31E050DD493FA4F62DA7 /* Feather.ttf in Resources */,

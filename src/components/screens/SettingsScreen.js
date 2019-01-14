@@ -7,7 +7,7 @@ class SettingsScreen extends Component {
     static navigationOptions = {
         title: 'Settings',
         headerStyle: {
-            backgroundColor: '#f4511e',
+            backgroundColor: '#ac0d42',
         },
         headerTintColor: '#fff',
         headerTitleStyle: {

@@ -8,7 +8,7 @@ class FoodJointScreen extends Component {
     static navigationOptions = {
         title: 'Food Joints',
         headerStyle: {
-            backgroundColor: '#f4511e',
+            backgroundColor: '#ac0d42',
         },
         headerTintColor: '#fff',
         headerTitleStyle: {

@@ -5,7 +5,7 @@ class EventsScreen extends Component {
     static navigationOptions = {
         title: 'Events',
         headerStyle: {
-            backgroundColor: '#f4511e',
+            backgroundColor: '#ac0d42',
         },
         headerTintColor: '#fff',
         headerTitleStyle: {

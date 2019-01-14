@@ -26,6 +26,7 @@ PODS:
     - FBSDKCoreKit
   - FBSDKShareKit (4.39.1):
     - FBSDKCoreKit
+  - FLAnimatedImage (1.0.12)
   - Folly (2016.10.31.00):
     - boost-for-react-native
     - DoubleConversion
@@ -67,6 +68,11 @@ PODS:
   - GTMSessionFetcher/Core (1.2.1)
   - React (0.57.8):
     - React/Core (= 0.57.8)
+  - react-native-fast-image (5.1.2):
+    - FLAnimatedImage
+    - React
+    - SDWebImage/Core
+    - SDWebImage/GIF
   - react-native-google-maps (0.22.1):
     - Google-Maps-iOS-Utils (= 2.1.0)
     - GoogleMaps (= 2.5.0)
@@ -122,6 +128,10 @@ PODS:
     - React
   - RNVectorIcons (6.1.0):
     - React
+  - SDWebImage/Core (4.4.3)
+  - SDWebImage/GIF (4.4.3):
+    - FLAnimatedImage (~> 1.0)
+    - SDWebImage/Core
   - yoga (0.57.8.React)
 
 DEPENDENCIES:
@@ -134,6 +144,7 @@ DEPENDENCIES:
   - Google-Maps-iOS-Utils
   - GoogleMaps
   - GoogleSignIn
+  - react-native-fast-image (from `../node_modules/react-native-fast-image`)
   - react-native-google-maps (from `../node_modules/react-native-maps`)
   - react-native-maps (from `../node_modules/react-native-maps`)
   - React/Core (from `../node_modules/react-native`)
@@ -162,11 +173,13 @@ SPEC REPOS:
     - FBSDKLoginKit
     - FBSDKMarketingKit
     - FBSDKShareKit
+    - FLAnimatedImage
     - Google-Maps-iOS-Utils
     - GoogleMaps
     - GoogleSignIn
     - GoogleToolboxForMac
     - GTMSessionFetcher
+    - SDWebImage
 
 EXTERNAL SOURCES:
   DoubleConversion:
@@ -177,6 +190,8 @@ EXTERNAL SOURCES:
     :podspec: "../node_modules/react-native/third-party-podspecs/glog.podspec"
   React:
     :path: "../node_modules/react-native"
+  react-native-fast-image:
+    :path: "../node_modules/react-native-fast-image"
   react-native-google-maps:
     :path: "../node_modules/react-native-maps"
   react-native-maps:
@@ -197,6 +212,7 @@ SPEC CHECKSUMS:
   FBSDKLoginKit: c3079d9a4db27c492287b1eed7a4272b28cf8a59
   FBSDKMarketingKit: e609f39d74ab273cf52e2f8b7e8829ed412b2827
   FBSDKShareKit: 27d7b982e7b1f4638da2f2b1ab6eba5afc6b5888
+  FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
   Folly: c89ac2d5c6ab169cd7397ef27485c44f35f742c7
   glog: e8acf0ebbf99759d3ff18c86c292a5898282dcde
   Google-Maps-iOS-Utils: c32891ff472eaaa1fca032beedafa1a013af7875
@@ -205,12 +221,14 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: ff31605b7d66400dcec09bed5861689aebadda4d
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
   React: 1fe0eb13d90b625d94c3b117c274dcfd2e760e11
+  react-native-fast-image: cba3d9bf9c2cf8ddb643d887a686c53a5dd90a2c
   react-native-google-maps: b946d62e25dc66097921ed82520e45b0b081768a
   react-native-maps: 066c2afcc89e18726377bcc685315f989ca22449
   RNGestureHandler: 282af6ea58ed8483612365159c58a3ca5f55e7da
   RNVectorIcons: 8c52e1e8da1153613fdef44748e865c25556cb9c
+  SDWebImage: c5594f1a19c48d526d321e548902b56b479cd508
   yoga: b1ce48b6cf950b98deae82838f5173ea7cf89e85
 
-PODFILE CHECKSUM: 3c0ac551dbcb8c2192779c8b5930e4b6600d5b2d
+PODFILE CHECKSUM: 6858ba2e342ae4476f3b811cc35bbc61b30e9ceb
 
 COCOAPODS: 1.5.3

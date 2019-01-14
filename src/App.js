@@ -39,7 +39,6 @@ class App extends Component {
   }
 
    findUserInDatabase = async (name, email, provider) => {
-     // TODO: Handle the case where the same email matches, but different providers
      await db.ref().child("users").orderByChild("email").equalTo(email).once("value", async (snapshot) => {
        if (snapshot.exists()) {
          // User exists in DB

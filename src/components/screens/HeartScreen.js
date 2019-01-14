@@ -16,7 +16,7 @@ class HeartScreen extends Component {
     };
 
     render(){
-        const { isLoggedIn, user, logOut, facebookLogin, googleLogin } = this.props.screenProps;
+        const { isLoggedIn, facebookLogin, googleLogin } = this.props.screenProps;
         return(
             <View style={{alignItems: 'center'}}>
                 { isLoggedIn ?

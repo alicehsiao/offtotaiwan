@@ -18,7 +18,7 @@ class SearchItemCard extends React.Component {
     };
 
     render(){
-        const { name, address, engName, category } = this.props.place;
+        const { name, engName, category } = this.props.place;
         // Send cards to the correct pages once those are built, currently all going to FoodJointDetails
         return (
             <TouchableOpacity delayPressIn={50} onPress={() => NavigationService.navigate('FoodJointDetails', {...this.props.place})}>
@@ -29,7 +29,6 @@ class SearchItemCard extends React.Component {
                             <Body style={styles.bodyContainer}>
                                 <Text>{name}</Text>
                                 <Text note>{engName}</Text>
-                                <Text note>Address: {address}</Text>
                             </Body>
                         </Left>
                     </CardItem>

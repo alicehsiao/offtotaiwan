@@ -11,6 +11,7 @@ class EventList extends Component {
         events: [],
         isReady: false
     }
+    
     componentDidMount() {
         // const URL = 'http://192.168.0.11:7777/api/v1/activities';
         const URL = 'http://172.24.25.128:7777/api/v1/activities';

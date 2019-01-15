@@ -103,10 +103,10 @@ class SearchScreen extends Component {
                 coordinate={marker.coordinates} 
                 title={marker.title}
                 description={marker.description}>
-                <MapView.Callout style={{borderRadius: 10}}>
+                <MapView.Callout style={styles.mapCalloutStyle}>
                     <View>
                         <Text>
-                            <Text style={{fontWeight: 'bold'}}>{marker.description}</Text>
+                            <Text style={styles.mapCallOutTextStyle}>{marker.description}</Text>
                             {"\n"}{marker.title}
                         </Text>
                     </View>
@@ -161,6 +161,12 @@ const styles = StyleSheet.create({
     mapContainer: {
         height: (Dimensions.get('window').width) * (9/16),
         width: Dimensions.get('window').width
+    },
+    mapCalloutStyle: {
+        borderRadius: 10
+    },
+    mapCallOutTextStyle: {
+        fontWeight: 'bold'
     }
 });
 

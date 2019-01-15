@@ -26,8 +26,8 @@ class FoodJointCard extends React.Component {
                         <Left>
                             <Thumbnail source={{uri: 'eat'}}/>
                             <Body style={styles.bodyContainer}>
-                                <Text>{name}</Text>
-                                <Text note>{engName}</Text>
+                                <Text>{engName}</Text>
+                                <Text note>{name}</Text>
                                 <Text note>Address: {address}</Text>
                             </Body>
                         </Left>

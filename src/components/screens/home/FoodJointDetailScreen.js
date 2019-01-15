@@ -40,9 +40,16 @@ class FoodJointDetailScreen extends React.Component {
 
         const URL = `https://maps.googleapis.com/maps/api/place/details/json?key=${Config.GOOGLE_API_KEY}&placeid=${placeId}`
         const res = encodeURI(URL);
+        console.log("1");
+        console.log(res);
 
         await axios.get(res)
             .then(response => {
+                console.log("2");
+                let hours = [];
+                if(response.data.result.opening_hours && response.data.result.opening_hours.weekday_text){
+                    hours = response.data.result.opening_hours.weekday_text;
+                }
                 this.setState({
                     engAddress: response.data.result.formatted_address,
                     marker: {
@@ -53,7 +60,7 @@ class FoodJointDetailScreen extends React.Component {
                             longitude: response.data.result.geometry.location.lng
                         }
                     },
-                    hours: response.data.result.opening_hours.weekday_text,
+                    hours,
                     internationalPhone: response.data.result.international_phone_number,
                     isReady: true
                 })
@@ -110,7 +117,7 @@ class FoodJointDetailScreen extends React.Component {
                                     <Text>
                                         <Text style={styles.boldText}>Phone:</Text>{this.state.internationalPhone}{"\n"}
                                         <Text style={styles.boldText}>Hours:</Text>{"\n"}
-                                        {this.state.hours.join("\n")}
+                                        {this.state.hours.length ===0 ? "No hours provided" : this.state.hours.join("\n")}
                                     </Text>
                                 </View>
                             </View>

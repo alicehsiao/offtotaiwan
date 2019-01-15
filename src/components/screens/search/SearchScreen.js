@@ -116,9 +116,18 @@ class SearchScreen extends Component {
     }
 
     handleQueryChange = (query) => {
-        this.setState({
-            query,
-        }, () => this.searchResults(this.state.query))
+        if(query === ""){
+            this.setState({
+                query,
+                markers: [],
+                isReady: false,
+                results: []
+            })
+        } else {
+            this.setState({
+                query,
+            }, () => this.searchResults(this.state.query))
+        }
     }
         
     handleSearchCancel = () => this.handleQueryChange("");

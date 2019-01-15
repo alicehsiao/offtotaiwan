@@ -2,20 +2,19 @@
 /* eslint-disable react/display-name */
 import React, { Component } from 'react';
 import { StatusBar } from 'react-native';
-import { createBottomTabNavigator, createStackNavigator, createAppContainer, StackActions } from 'react-navigation';
+import { createBottomTabNavigator, createStackNavigator, createAppContainer } from 'react-navigation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import DetailsScreen from './components/screens/DetailsScreen';
-import FoodJointScreen from './components/screens/FoodJointScreen';
-import PlaceDetail from './components/screens/PlaceDetail';
 import NavigationService from './NavigationService';
 // import PropTypes from 'prop-types';
 import {
   HomeScreen,
-  SettingsScreen,
   SearchScreen,
+  SettingsScreen,
   HeartScreen,
   EventsScreen,
-  UpcomingDetailScreen
+  EventDetailScreen,
+  FoodJointScreen,
+  FoodJointDetailScreen
 } from './components/screens';
 
 class Router extends Component {
@@ -42,16 +41,18 @@ class Router extends Component {
 const HomeStack = createStackNavigator({
     Home: HomeScreen,
     FoodJoints: FoodJointScreen,
-    Details: PlaceDetail
+    FoodJointDetails: FoodJointDetailScreen,
+    Settings: SettingsScreen
 });
 
 const SearchStack = createStackNavigator({
-    Search: SearchScreen
+    Search: SearchScreen,
+    FoodJointDetails: FoodJointDetailScreen
 });
 
 const EventsStack = createStackNavigator({
   Events: EventsScreen,
-  Event: UpcomingDetailScreen
+  Event: EventDetailScreen
 });
 
 const HeartStack = createStackNavigator({

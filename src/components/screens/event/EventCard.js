@@ -1,10 +1,9 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
-import { View, TouchableOpacity } from 'react-native';
+import { TouchableOpacity, StyleSheet } from 'react-native';
 import { Card, CardItem, Text, Body, Thumbnail, Left } from 'native-base';
 import moment from 'moment';
 import NavigationService from '../../../NavigationService';
-import { Button, Icon } from 'react-native-elements';
 
 class EventCard extends Component {
   render() {
@@ -17,8 +16,8 @@ class EventCard extends Component {
             <Card>
                 <CardItem>
                     <Left>
-                        <Thumbnail source={{uri: 'event'}}/>
-                        <Body style={{flexDirection:'column'}}>
+                        <Thumbnail source={{uri: 'dome'}}/>
+                        <Body style={styles.bodyContainer}>
                             <Text>{name}</Text>
                             <Text note>{engName}</Text>
                             <Text note>Dates: {startDate} - {endDate}</Text>
@@ -30,5 +29,11 @@ class EventCard extends Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+    bodyContainer:{
+        flexDirection: 'column'
+    }
+})
 
 export default EventCard;

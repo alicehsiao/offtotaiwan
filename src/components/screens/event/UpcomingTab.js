@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Container, Content } from 'native-base';
-import EventList from './events/EventList';
+import EventList from './EventList';
 
-class UpcomingScreen extends Component {
+class UpcomingTab extends Component {
   render() {
     return (
       <Container>
@@ -14,4 +14,4 @@ class UpcomingScreen extends Component {
   }
 }
 
-export default UpcomingScreen;
+export default UpcomingTab;

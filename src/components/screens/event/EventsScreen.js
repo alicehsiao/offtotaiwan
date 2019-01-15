@@ -1,7 +1,8 @@
+/* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import { Container, Tab, Tabs } from 'native-base';
-import UpcomingScreen from './UpcomingScreen';
-import NearMeScreen from './events/NearMeScreen';
+import UpcomingTab from './UpcomingTab';
+import BookmarkedEventTab from './BookmarkedEventTab';
 
 
 class EventsScreen extends Component {
@@ -17,14 +18,22 @@ class EventsScreen extends Component {
     };
 
     render(){
+        const screenProps = {
+            facebookLogin: this.props.screenProps.facebookLogin,
+            googleLogin: this.props.screenProps.googleLogin,
+            isLoggedIn: this.props.screenProps.isLoggedIn,
+            logOut: this.props.screenProps.logOut,
+            user: this.props.screenProps.user
+        }
+
         return (
             <Container>
                 <Tabs>
                     <Tab heading="Upcoming">
-                        <UpcomingScreen />
+                        <UpcomingTab />
                     </Tab>
-                    <Tab heading="Near Me">
-                        <NearMeScreen />
+                    <Tab heading="Bookmarked">
+                        <BookmarkedEventTab screenProps={screenProps}/>
                     </Tab>
                 </Tabs>
             </Container>

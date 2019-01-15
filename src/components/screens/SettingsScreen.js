@@ -18,21 +18,21 @@ class SettingsScreen extends Component {
     render(){
         const { isLoggedIn, user, logOut, facebookLogin, googleLogin } = this.props.screenProps;
         return(
-            <View style={{alignItems: 'center'}}>
+            <View style={styles.outerContainer}>
                 { isLoggedIn ?
-                     <Card title={user.name} containerStyle={{width: 300}}>
+                     <Card title={user.name} containerStyle={styles.cardContainer}>
                         <View>
-                            <Text style={{marginBottom: 10, textAlign: 'center'}}>
+                            <Text style={styles.emailStyle}>
                                 alice@gmail.com
                             </Text>
                             <Button 
                                 title="Logout" 
-                                buttonStyle={{marginTop: 10, borderRadius: 25}} 
+                                buttonStyle={styles.logoutStyle} 
                                 onPress={()=> logOut()}/>
                         </View>
                      </Card>
                      :
-                     <Card title="Login" containerStyle={{width: 300}}>
+                     <Card title="Login" containerStyle={styles.cardContainer}>
                         <SocialIcon
                             title = 'Sign In With Facebook'
                             button
@@ -51,10 +51,19 @@ class SettingsScreen extends Component {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
+    outerContainer: {
         alignItems: 'center',
+    },
+    cardContainer: {
+        width: 300
+    },
+    emailStyle: {
+        marginBottom: 10, 
+        textAlign: 'center'
+    },
+    logoutStyle: {
+        marginTop: 10, 
+        borderRadius: 25
     }
 });
 

@@ -1,13 +1,11 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
-import { View, ScrollView, Image, Text } from 'react-native';
+import { View, ScrollView, Image, Text, StyleSheet } from 'react-native';
 import moment from 'moment';
-import {
-    RkCard,
-} from 'react-native-ui-kitten';
+import { RkCard } from 'react-native-ui-kitten';
 
 
-class UpcomingDetailScreen extends Component {
+class EventDetailScreen extends Component {
     static navigationOptions = {
         title: 'Event Details',
         headerStyle: {
@@ -32,10 +30,10 @@ class UpcomingDetailScreen extends Component {
         return(
             <ScrollView>
                 <RkCard rkType='article'>
-                    <Image rkCardImg source={{uri: 'explore'}} />
+                    <Image rkCardImg source={{uri: 'cks'}} />
                     <View rkCardHeader>
                         <View>
-                            <Text style={{fontWeight: "bold", fontSize: 16 }}>
+                            <Text style={styles.engNameStyle}>
                                 {engName}   
                             </Text>
                         </View>
@@ -49,7 +47,7 @@ class UpcomingDetailScreen extends Component {
                         <View>
                             <Text>
                                 <Text>
-                                    <Text style={{fontWeight: "bold" }}>Date: </Text> {startDate} - {endDate}
+                                    <Text style={styles.dateStyle}>Date: </Text> {startDate} - {endDate}
                                 </Text>
                             </Text>
                         </View>
@@ -60,6 +58,16 @@ class UpcomingDetailScreen extends Component {
     }
 }
 
+const styles = StyleSheet.create({
+    engNameStyle: {
+        fontWeight: 'bold',
+        fontSize: 16
+    },
+    dateStyle: {
+        fontWeight: 'bold'
+    }
+})
 
-export { UpcomingDetailScreen };
+
+export { EventDetailScreen };
 

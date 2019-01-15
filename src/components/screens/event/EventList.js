@@ -2,10 +2,9 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, { Component } from 'react';
 import { View, ActivityIndicator, StyleSheet } from 'react-native';
-import { Container, Content, Spinner } from 'native-base';
+import { Container, Content } from 'native-base';
 import EventCard from './EventCard';
 import axios from 'axios';
-import NavigationService from '../../../NavigationService';
 
 class EventList extends Component {
     state = {

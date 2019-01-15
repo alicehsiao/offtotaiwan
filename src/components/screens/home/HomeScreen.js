@@ -2,9 +2,9 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, { Component } from 'react';
 import { View, Image, TouchableHighlight, StyleSheet } from 'react-native';
-import { Container, Header } from 'native-base';
+import { Container } from 'native-base';
 import { Col, Row, Grid } from 'react-native-easy-grid';
-import NavigationService from '../../NavigationService';
+import NavigationService from '../../../NavigationService';
 import { Icon } from 'react-native-elements';
 
 class HomeScreen extends Component {
@@ -32,25 +32,25 @@ class HomeScreen extends Component {
         return (
             <Container>
                 <Grid>
-                    <Row style={{ height: 175, marginTop: 10}}>
-                        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+                    <Row style={styles.topRowStyle}>
+                        <View style={styles.containerStyle}>
                             <TouchableHighlight onPress = {()=>alert("Photo Pressed")}>
-                                <View style={{height: 175, width: 219}}>
+                                <View style={styles.largeImageViewStyle}>
                                     <Image
-                                        style= {{flex:1 , width: undefined, height: undefined, borderRadius: 15}}
+                                        style= {styles.imageStyle}
                                         source={{uri: 'explore'}} 
                                     />
                                 </View>
                             </TouchableHighlight>
                         </View>
                     </Row>
-                    <Row style={{ height: 175 }}>
+                    <Row style={styles.midRowStyle}>
                         <Col>
-                            <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+                            <View style={styles.containerStyle}>
                                 <TouchableHighlight onPress = {()=>alert("Photo Pressed")}>
-                                    <View style={{height: 140, width: 140}}>
+                                    <View style={styles.smallImageViewStyle}>
                                         <Image
-                                        style= {{flex:1 , width: undefined, height: undefined, borderRadius: 15}}
+                                        style= {styles.imageStyle}
                                         source={{uri: 'bike'}} 
                                         />
                                     </View>
@@ -58,11 +58,11 @@ class HomeScreen extends Component {
                             </View>
                         </Col>
                         <Col>
-                            <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+                            <View style={styles.containerStyle}>
                                 <TouchableHighlight onPress = {()=>alert("Photo Pressed")}>
-                                    <View style={{height: 140, width: 140}}>
+                                    <View style={styles.smallImageViewStyle}>
                                         <Image
-                                        style= {{flex:1 , width: undefined, height: undefined, borderRadius: 15}}
+                                        style= {styles.imageStyle}
                                         source={{uri: 'hike'}} 
                                         />
                                     </View>
@@ -70,12 +70,12 @@ class HomeScreen extends Component {
                             </View>
                         </Col>
                     </Row>
-                    <Row style={{ height: 175, marginBottom: 5}}>
-                        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+                    <Row style={styles.lastRowStyle}>
+                        <View style={styles.containerStyle}>
                             <TouchableHighlight onPress = {()=>NavigationService.navigate('FoodJoints')}>
-                                <View style={{height: 175, width: 219}}>
+                                <View style={styles.largeImageViewStyle}>
                                     <Image
-                                        style= {{flex:1 , width: undefined, height: undefined, borderRadius: 15}}
+                                        style= {styles.imageStyle}
                                         source={{uri: 'eat'}} 
                                     />
                                 </View>
@@ -88,5 +88,37 @@ class HomeScreen extends Component {
     } 
 }
 
+const styles = StyleSheet.create({
+    topRowStyle: {
+        height: 175, 
+        marginTop: 10
+    },
+    midRowStyle: {
+        height: 175
+    },
+    lastRowStyle:{
+       height: 175, 
+       marginBottom: 5
+    },
+    containerStyle: {
+        flex: 1, 
+        justifyContent: 'center', 
+        alignItems: 'center'
+    },
+    imageStyle: {
+        flex: 1, 
+        width: undefined, 
+        height: undefined, 
+        borderRadius: 15
+    },
+    largeImageViewStyle: {
+        height: 175, 
+        width: 219
+    },
+    smallImageViewStyle: {
+        height: 140, 
+        width: 140
+    }
+})
 
 export { HomeScreen };

@@ -20,7 +20,7 @@ class FoodJointCard extends React.Component {
     render(){
         const { name, address, engName } = this.props.place;
         return (
-            <TouchableOpacity onPress={() => NavigationService.navigate('FoodJointDetails', {...this.props.place})}>
+            <TouchableOpacity delayPressIn={50} onPress={() => NavigationService.navigate('FoodJointDetails', {...this.props.place})}>
                 <Card>
                     <CardItem>
                         <Left>

@@ -77,10 +77,10 @@ class FoodJointDetailScreen extends React.Component {
                                 style={styles.mapContainer}
                                 showsUserLocation={true}
                                 region={{
-                                    latitude: 24.1477,
-                                    longitude: 120.6736,
-                                    latitudeDelta: 0.10,
-                                    longitudeDelta: 0.10,
+                                    latitude: this.state.marker.coordinates.latitude,
+                                    longitude: this.state.marker.coordinates.longitude,
+                                    latitudeDelta: 0.05,
+                                    longitudeDelta: 0.05,
                                 }}>
                                 <MapView.Marker 
                                     key={this.state.marker.title} 

@@ -34,39 +34,39 @@ class HomeScreen extends Component {
                 <Grid>
                     <Row style={styles.topRowStyle}>
                         <View style={styles.containerStyle}>
-                            <TouchableHighlight onPress = {()=>alert("Photo Pressed")}>
+                            <TouchableOpacity onPress = {()=>NavigationService.navigate('Attractions')}>
                                 <View style={styles.largeImageViewStyle}>
                                     <Image
                                         style= {styles.imageStyle}
                                         source={{uri: 'explore'}} 
                                     />
                                 </View>
-                            </TouchableHighlight>
+                            </TouchableOpacity>
                         </View>
                     </Row>
                     <Row style={styles.midRowStyle}>
                         <Col>
                             <View style={styles.containerStyle}>
-                                <TouchableHighlight onPress = {()=>alert("Photo Pressed")}>
+                                <TouchableOpacity onPress = {()=>NavigationService.navigate('Bikes')}>
                                     <View style={styles.smallImageViewStyle}>
                                         <Image
                                         style= {styles.imageStyle}
                                         source={{uri: 'bike'}} 
                                         />
                                     </View>
-                                </TouchableHighlight>
+                                </TouchableOpacity>
                             </View>
                         </Col>
                         <Col>
                             <View style={styles.containerStyle}>
-                                <TouchableHighlight onPress = {()=>alert("Photo Pressed")}>
+                                <TouchableOpacity onPress = {()=>NavigationService.navigate('Hikes')}>
                                     <View style={styles.smallImageViewStyle}>
                                         <Image
                                         style= {styles.imageStyle}
                                         source={{uri: 'hike'}} 
                                         />
                                     </View>
-                                </TouchableHighlight>
+                                </TouchableOpacity>
                             </View>
                         </Col>
                     </Row>

@@ -14,7 +14,13 @@ import {
   EventsScreen,
   EventDetailScreen,
   FoodJointScreen,
-  FoodJointDetailScreen
+  FoodJointDetailScreen,
+  HikeScreen,
+  HikeDetailScreen,
+  BikeScreen,
+  BikeDetailScreen,
+  AttractionScreen,
+  AttractionDetailScreen
 } from './components/screens';
 
 class Router extends Component {
@@ -42,6 +48,12 @@ const HomeStack = createStackNavigator({
     Home: HomeScreen,
     FoodJoints: FoodJointScreen,
     FoodJointDetails: FoodJointDetailScreen,
+    Hikes: HikeScreen,
+    // HikeDetails: HikeDetailScreen,
+    Bikes: BikeScreen,
+    // BikeDetails: BikeDetailScreen,
+    Attractions: AttractionScreen,
+    // AttractionDetails: AttractionDetailScreen,
     Settings: SettingsScreen
 });
 

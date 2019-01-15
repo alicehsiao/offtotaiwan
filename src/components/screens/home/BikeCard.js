@@ -5,19 +5,19 @@ import { TouchableOpacity, StyleSheet } from 'react-native';
 import { Card, CardItem, Text, Body, Thumbnail, Left } from 'native-base';
 import NavigationService from '../../../NavigationService';
 
-class FoodJointCard extends React.Component {
+class BikeCard extends React.Component {
     render(){
-        const { name, address, engName } = this.props.place;
+        const { name, distanceKM, engName } = this.props.place;
         return (
-            <TouchableOpacity delayPressIn={50} onPress={() => NavigationService.navigate('FoodJointDetails', {...this.props.place})}>
+            <TouchableOpacity delayPressIn={50} onPress={() => NavigationService.navigate('BikeDetails', {...this.props.place})}>
                 <Card>
                     <CardItem>
                         <Left>
-                            <Thumbnail source={{uri: 'eat'}}/>
+                            <Thumbnail source={{uri: 'bike'}}/>
                             <Body style={styles.bodyContainer}>
                                 <Text>{engName}</Text>
                                 <Text note>{name}</Text>
-                                <Text note>Address: {address}</Text>
+                                <Text note>Distance: {distanceKM}km</Text>
                             </Body>
                         </Left>
                     </CardItem>
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     }
 })
 
-export default FoodJointCard;
+export default BikeCard;
 
 
 {/* <Icon

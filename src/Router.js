@@ -49,11 +49,11 @@ const HomeStack = createStackNavigator({
     FoodJoints: FoodJointScreen,
     FoodJointDetails: FoodJointDetailScreen,
     Hikes: HikeScreen,
-    // HikeDetails: HikeDetailScreen,
+    HikeDetails: HikeDetailScreen,
     Bikes: BikeScreen,
-    // BikeDetails: BikeDetailScreen,
+    BikeDetails: BikeDetailScreen,
     Attractions: AttractionScreen,
-    // AttractionDetails: AttractionDetailScreen,
+    AttractionDetails: AttractionDetailScreen,
     Settings: SettingsScreen
 });
 

@@ -30,6 +30,7 @@ class FoodJointDetailScreen extends React.Component {
         },
         internationalPhone: '',
         hours: [],
+        rating: 0,
         isReady: false
     }
 
@@ -40,15 +41,16 @@ class FoodJointDetailScreen extends React.Component {
 
         const URL = `https://maps.googleapis.com/maps/api/place/details/json?key=${Config.GOOGLE_API_KEY}&placeid=${placeId}`
         const res = encodeURI(URL);
-        console.log("1");
-        console.log(res);
 
         await axios.get(res)
             .then(response => {
-                console.log("2");
                 let hours = [];
+                let rating = 0;
                 if(response.data.result.opening_hours && response.data.result.opening_hours.weekday_text){
                     hours = response.data.result.opening_hours.weekday_text;
+                }
+                if(response.data.result.rating){
+                    rating = response.data.result.rating;
                 }
                 this.setState({
                     engAddress: response.data.result.formatted_address,
@@ -61,13 +63,12 @@ class FoodJointDetailScreen extends React.Component {
                         }
                     },
                     hours,
+                    rating,
                     internationalPhone: response.data.result.international_phone_number,
                     isReady: true
                 })
             })
             .catch(err => console.log(err))
-        
-        console.log(this.state);
     }
 
     render(){
@@ -115,7 +116,10 @@ class FoodJointDetailScreen extends React.Component {
                             <View rkCardContent>
                                 <View>
                                     <Text>
-                                        <Text style={styles.boldText}>Phone:</Text>{this.state.internationalPhone}{"\n"}
+                                        <Text style={styles.boldText}>Phone:</Text>{this.state.internationalPhone}
+                                        {"\n"}
+                                        <Text style={styles.boldText}>Rating: </Text>{this.state.rating !== 0 ? this.state.rating.toString() : "No rating yet"}
+                                        {"\n"}
                                         <Text style={styles.boldText}>Hours:</Text>{"\n"}
                                         {this.state.hours.length ===0 ? "No hours provided" : this.state.hours.join("\n")}
                                     </Text>
@@ -171,4 +175,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export { FoodJointDetailScreen};
+export { FoodJointDetailScreen };

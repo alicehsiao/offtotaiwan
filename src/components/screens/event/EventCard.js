@@ -11,8 +11,9 @@ class EventCard extends Component {
 
     const startDate = moment(start.toString()).format('L');
     const endDate = moment(end.toString()).format('L');
+    
     return (
-        <TouchableOpacity onPress={() => NavigationService.navigate('Event', {...this.props.event})} >
+        <TouchableOpacity onPress={() => NavigationService.navigate('Event', {...this.props.event, updateBookmark: this.props.updateBookmark})} >
             <Card>
                 <CardItem>
                     <Left>

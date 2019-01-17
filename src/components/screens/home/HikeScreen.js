@@ -22,8 +22,8 @@ class HikeScreen extends Component {
     };
 
     componentDidMount() {
-        // const URL = 'http://192.168.0.11:7777/api/v1/hikingtrails';
-        const URL = 'http://172.24.25.128:7777/api/v1/hikingtrails';
+        const URL = 'http://192.168.0.11:7777/api/v1/hikingtrails';
+        // const URL = 'http://172.24.25.128:7777/api/v1/hikingtrails';
         axios.get(URL)
             .then(response => {
                 this.setState({

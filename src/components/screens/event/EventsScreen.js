@@ -23,14 +23,16 @@ class EventsScreen extends Component {
             googleLogin: this.props.screenProps.googleLogin,
             isLoggedIn: this.props.screenProps.isLoggedIn,
             logOut: this.props.screenProps.logOut,
-            user: this.props.screenProps.user
+            user: this.props.screenProps.user,
+            loadEvents: this.props.screenProps.loadEvents,
+            updateBookmark: this.props.screenProps.updateBookmark
         }
 
         return (
             <Container>
                 <Tabs>
                     <Tab heading="Upcoming">
-                        <UpcomingTab />
+                        <UpcomingTab screenProps={screenProps}/>
                     </Tab>
                     <Tab heading="Bookmarked">
                         <BookmarkedEventTab screenProps={screenProps}/>

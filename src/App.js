@@ -17,7 +17,8 @@ class App extends Component {
       name: '',
       email: '',
       hearts: [],
-      provider: ''
+      provider: '',
+      events: []
     }
   }
 
@@ -38,7 +39,7 @@ class App extends Component {
     SplashScreen.hide();
   }
 
-   findUserInDatabase = async (name, email, provider) => {
+  findUserInDatabase = async (name, email, provider) => {
      await db.ref().child("users").orderByChild("email").equalTo(email).once("value", async (snapshot) => {
        if (snapshot.exists()) {
          // User exists in DB
@@ -72,12 +73,13 @@ class App extends Component {
           })
        }
      });
-   }
+  }
 
   facebookLogin = async () => {
     try {
       const result = await LoginManager.logInWithReadPermissions(['public_profile', 'email']);
       if (result.isCancelled) {
+        await LoginManager.logOut();
         NavigationService.navigate('Home');
         return;
       }
@@ -129,6 +131,7 @@ class App extends Component {
       switch(this.state.provider) {
         case "facebook":
           await LoginManager.logOut();
+          
           break;
         case "google":
           await GoogleSignin.revokeAccess();
@@ -155,6 +158,52 @@ class App extends Component {
     }
   }
 
+  loadEvents = (events) => {
+    this.setState({
+      events
+    });
+  }
+
+  findEvent(eventList, id) {
+      return eventList.find(event => event._id === id);
+  }
+
+  updateBookmark = (id) => {
+      console.log('in update favorite');
+      let eventList = [...this.state.events];
+      let singleEvent = this.findEvent(eventList, id);
+      for (const event in eventList) {
+          if (eventList[event]._id === singleEvent._id) {
+              eventList[event].bookmark = !eventList[event].bookmark;
+              break;
+          }
+      }
+      this.setState({
+          events: eventList
+      });
+      console.log(this.state.events[0]);
+      console.log(this.state.events[1]);
+  };
+
+    // need eventList, need bookmarkedEvents (find the event and filter it from that list)
+    // var array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+
+    // var filtered = array.filter(function (value, index, arr) {
+
+    //     return value > 5;
+
+    // });
+
+    //filtered => [6, 7, 8, 9]
+    //array => [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+
+    // addToBookmarks = () => {
+
+    // }
+
+    // removeFromBookMarks = () => {
+
+    // }
 
   render() {
     const screenProps = {
@@ -162,7 +211,9 @@ class App extends Component {
       googleLogin: this.googleLogin,
       isLoggedIn: this.state.isLoggedIn,
       logOut: this.logOut,
-      user: this.state.user
+      user: this.state.user,
+      loadEvents: this.loadEvents,
+      updateBookmark: this.updateBookmark
     }
 
     return (

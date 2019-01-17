@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-color-literals */
 /* eslint-disable react-native/no-inline-styles */
 import React, { Component } from 'react';
-import { View, Image, TouchableHighlight, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { Container } from 'native-base';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import NavigationService from '../../../NavigationService';

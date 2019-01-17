@@ -1,11 +1,11 @@
-/* eslint-disable react/prop-types */
 /* eslint-disable react/display-name */
 import React, { Component } from 'react';
 import { StatusBar } from 'react-native';
 import { createBottomTabNavigator, createStackNavigator, createAppContainer } from 'react-navigation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import NavigationService from './NavigationService';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
+
 import {
   HomeScreen,
   SearchScreen,
@@ -34,7 +34,6 @@ class Router extends Component {
         isLoggedIn: this.props.screenProps.isLoggedIn,
         logOut: this.props.screenProps.logOut,
         user: this.props.screenProps.user,
-        loadEvents: this.props.screenProps.loadEvents,
         updateBookmark: this.props.screenProps.updateBookmark,
         eventList: this.props.screenProps.eventList,
         bookmarkedEvents: this.props.screenProps.bookmarkedEvents
@@ -120,5 +119,19 @@ const TabNavigator = createBottomTabNavigator(
 );
 
 const AppContainer = createAppContainer(TabNavigator);
+
+Router.propTypes = {
+  screenProps: PropTypes.shape({
+    facebookLogin: PropTypes.func.isRequired,
+    googleLogin: PropTypes.func.isRequired,
+    isLoggedIn: PropTypes.bool.isRequired,
+    logOut: PropTypes.func.isRequired,
+    user: PropTypes.object,
+    updateBookmark: PropTypes.func.isRequired,
+    eventList: PropTypes.array.isRequired,
+    bookmarkedEvents: PropTypes.array
+  })
+}
+
 
 export default Router;

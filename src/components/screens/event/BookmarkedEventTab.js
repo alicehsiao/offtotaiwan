@@ -1,9 +1,9 @@
-/* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Card, SocialIcon } from 'react-native-elements';
 import { Container, Content } from 'native-base';
 import EventCard from './EventCard';
+import PropTypes from 'prop-types';
 
 class BookmarkedEventTab extends Component {
     renderEvents(bookmarkedEvents) {
@@ -55,5 +55,16 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     }
 })
+
+BookmarkedEventTab.propTypes = {
+  screenProps: PropTypes.shape({
+    facebookLogin: PropTypes.func.isRequired,
+    googleLogin: PropTypes.func.isRequired,
+    isLoggedIn: PropTypes.bool.isRequired,
+    updateBookmark: PropTypes.func.isRequired,
+    bookmarkedEvents: PropTypes.array
+  })
+}
+
 
 export default BookmarkedEventTab;

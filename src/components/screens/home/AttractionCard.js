@@ -1,9 +1,10 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import { TouchableOpacity, StyleSheet } from 'react-native';
-// import { Icon } from 'react-native-elements';
 import { Card, CardItem, Text, Body, Thumbnail, Left } from 'native-base';
 import NavigationService from '../../../NavigationService';
+import PropTypes from 'prop-types';
+// import { Icon } from 'react-native-elements';
+
 
 class AttractionCard extends React.Component {
     render(){
@@ -32,6 +33,14 @@ const styles = StyleSheet.create({
         flexDirection: 'column'
     }
 })
+
+AttractionCard.propTypes = {
+    place: PropTypes.shape({
+        name: PropTypes.string,
+        engName: PropTypes.string,
+        address: PropTypes.string
+    })
+}
 
 export default AttractionCard;
 

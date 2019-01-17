@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 /* eslint-disable react/display-name */
 import React, { Component } from 'react';
 import { AsyncStorage } from 'react-native';
@@ -230,7 +229,6 @@ class App extends Component {
       isLoggedIn: this.state.isLoggedIn,
       logOut: this.logOut,
       user: this.state.user,
-      loadEvents: this.loadEvents,
       updateBookmark: this.updateBookmark,
       eventList: this.state.eventList,
       bookmarkedEvents: this.state.user.events

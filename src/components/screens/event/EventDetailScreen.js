@@ -1,10 +1,8 @@
-/* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import { View, ScrollView, Image, Text, StyleSheet } from 'react-native';
 import moment from 'moment';
 import { RkCard } from 'react-native-ui-kitten';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
 
 class EventDetailScreen extends Component {
     static navigationOptions = {

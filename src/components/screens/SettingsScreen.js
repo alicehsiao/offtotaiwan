@@ -1,7 +1,7 @@
-/* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Card, SocialIcon, Button } from 'react-native-elements';
+import PropTypes from 'prop-types';
 
 class SettingsScreen extends Component {
     static navigationOptions = {
@@ -66,5 +66,17 @@ const styles = StyleSheet.create({
         borderRadius: 25
     }
 });
+
+SettingsScreen.propTypes = {
+  screenProps: PropTypes.shape({
+    facebookLogin: PropTypes.func.isRequired,
+    googleLogin: PropTypes.func.isRequired,
+    isLoggedIn: PropTypes.bool.isRequired,
+    logOut: PropTypes.func.isRequired,
+    user: PropTypes.object
+  })
+}
+
+
 
 export { SettingsScreen };

@@ -1,11 +1,8 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react-native/no-color-literals */
-/* eslint-disable react-native/no-inline-styles */
 import React, { Component } from 'react';
 import { View, ActivityIndicator, StyleSheet } from 'react-native';
 import { Container, Content } from 'native-base';
 import EventCard from './EventCard';
-import { db } from '../../../../config/firebase';
+import PropTypes from 'prop-types';
 class EventList extends Component {
     state = {
         eventList: [],
@@ -62,6 +59,14 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         height: 80
     }
-})
+});
+
+EventList.propTypes = {
+    screenProps: PropTypes.shape({
+        isLoggedIn: PropTypes.bool.isRequired,
+        updateBookmark: PropTypes.func.isRequired,
+        eventList: PropTypes.array.isRequired
+    })
+}
 
 export default EventList;

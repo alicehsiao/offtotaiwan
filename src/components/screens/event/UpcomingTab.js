@@ -1,7 +1,7 @@
-/* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import { Container, Content } from 'native-base';
 import EventList from './EventList';
+import PropTypes from 'prop-types';
 
 class UpcomingTab extends Component {
   render() {
@@ -11,7 +11,6 @@ class UpcomingTab extends Component {
       isLoggedIn: this.props.screenProps.isLoggedIn,
       logOut: this.props.screenProps.logOut,
       user: this.props.screenProps.user,
-      loadEvents: this.props.screenProps.loadEvents,
       updateBookmark: this.props.screenProps.updateBookmark,
       eventList: this.props.screenProps.eventList
     }
@@ -24,6 +23,19 @@ class UpcomingTab extends Component {
       </Container>
     );
   }
+}
+
+UpcomingTab.propTypes = {
+  screenProps: PropTypes.shape({
+    facebookLogin: PropTypes.func.isRequired,
+    googleLogin: PropTypes.func.isRequired,
+    isLoggedIn: PropTypes.bool.isRequired,
+    logOut: PropTypes.func.isRequired,
+    user: PropTypes.object,
+    updateBookmark: PropTypes.func.isRequired,
+    eventList: PropTypes.array.isRequired,
+    bookmarkedEvents: PropTypes.array
+  })
 }
 
 export default UpcomingTab;

@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import { View, ScrollView, Text, StyleSheet, Dimensions, ActivityIndicator } from 'react-native';
 import { RkCard } from 'react-native-ui-kitten';

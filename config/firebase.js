@@ -1,5 +1,4 @@
 import firebase from 'firebase';
-import Rebase from 're-base';
 
 import {
     FIREBASE_KEY,

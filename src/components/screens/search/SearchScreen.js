@@ -31,18 +31,6 @@ class SearchScreen extends Component {
         }
     }
 
-    // componentDidMount() {
-    //     navigator.geolocation.getCurrentPosition(
-    //         (position) => {
-    //             this.setState({
-    //                 latitude: position.coords.latitude,
-    //                 longitude: position.coords.longitude,
-    //             });
-    //         },
-    //         (error) => console.log(error.message)
-    //     );
-    // }
-
     searchResults = async () => {
         let URL = `https://off-to-taiwan.herokuapp.com/api/v1/search?name=${this.state.query}`;
 

@@ -1,9 +1,9 @@
-/* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import { TouchableOpacity, StyleSheet } from 'react-native';
 import { Card, CardItem, Text, Body, Thumbnail, Left } from 'native-base';
 import moment from 'moment';
 import NavigationService from '../../../NavigationService';
+import PropTypes from 'prop-types';
 
 class EventCard extends Component {
   render() {
@@ -35,6 +35,18 @@ const styles = StyleSheet.create({
     bodyContainer:{
         flexDirection: 'column'
     }
-})
+});
+
+EventCard.propTypes = {
+    isLoggedIn: PropTypes.bool.isRequired,
+    updateBookmark: PropTypes.func.isRequired,
+    event: PropTypes.shape({
+        name: PropTypes.string,
+        engName: PropTypes.string,
+        start: PropTypes.date,
+        end: PropTypes.date
+    })
+}
+
 
 export default EventCard;

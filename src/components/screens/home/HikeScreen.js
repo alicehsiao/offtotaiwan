@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React, { Component } from 'react';
 import { ScrollView, ActivityIndicator, View, StyleSheet } from 'react-native';
 import HikeCard from './HikeCard';

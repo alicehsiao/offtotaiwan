@@ -22,8 +22,7 @@ class FoodJointScreen extends Component {
     };
 
     componentDidMount() {
-        const URL = 'http://192.168.0.11:7777/api/v1/foodjoints';
-        // const URL = 'http://172.24.25.128:7777/api/v1/foodjoints';
+        const URL = 'https://off-to-taiwan.herokuapp.com/api/v1/foodjoints';
         axios.get(URL)
             .then(response => {
                 this.setState({

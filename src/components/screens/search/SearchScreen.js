@@ -44,8 +44,7 @@ class SearchScreen extends Component {
     // }
 
     searchResults = async () => {
-        // let URL = `http://192.168.0.11:7777/api/v1/search?name=${this.state.query}`;
-        let URL = `http://172.24.25.128:7777/api/v1/search?name=${this.state.query}`;
+        let URL = `https://off-to-taiwan.herokuapp.com/api/v1/search?name=${this.state.query}`;
 
         await axios.get(URL)
             .then(response => {

@@ -38,6 +38,7 @@ class BikeDetailScreen extends React.Component {
 
         const URL = `https://maps.googleapis.com/maps/api/place/details/json?key=${Config.GOOGLE_API_KEY}&placeid=${placeId}`
         const res = encodeURI(URL);
+        console.log(res);
 
         await axios.get(res)
             .then(response => {

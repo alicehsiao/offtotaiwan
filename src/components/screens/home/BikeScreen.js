@@ -22,8 +22,7 @@ class BikeScreen extends Component {
     };
 
     componentDidMount() {
-        const URL = 'http://192.168.0.11:7777/api/v1/bikepaths';
-        // const URL = 'http://172.24.25.128:7777/api/v1/bikepaths';
+        const URL = 'https://off-to-taiwan.herokuapp.com/api/v1/bikepaths';
         axios.get(URL)
             .then(response => {
                 this.setState({

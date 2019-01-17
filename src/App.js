@@ -10,16 +10,19 @@ import { GoogleSignin, statusCodes } from 'react-native-google-signin';
 import SplashScreen from "react-native-splash-screen";
 import { db } from '../config/firebase';
 import NavigationService from './NavigationService';
+import axios from 'axios';
 class App extends Component {
   state = {
     isLoggedIn: false,
     user: {
+      id: '',
       name: '',
       email: '',
       hearts: [],
       provider: '',
       events: []
-    }
+    },
+    eventList: []
   }
 
   async componentDidMount(){
@@ -36,20 +39,27 @@ class App extends Component {
       console.log('Error Retrieving Data');
     }
 
+    await this.loadEvents();
+
     SplashScreen.hide();
   }
+
+  // then persisting the saved events in db and running a loop upon load to change bookmarks to true
 
   findUserInDatabase = async (name, email, provider) => {
      await db.ref().child("users").orderByChild("email").equalTo(email).once("value", async (snapshot) => {
        if (snapshot.exists()) {
          // User exists in DB
+         const key = Object.keys(snapshot.val())[0];
          snapshot.forEach(childSnapshot => {
            var data = childSnapshot.val();
            this.setState({
              user: {
+                id: key,
                 name: data.name,
                 email: data.email,
-                hearts: data.hearts || []
+                hearts: data.hearts || [],
+                events: data.events || [],
              },
              isLoggedIn: true,
              provider,
@@ -158,19 +168,41 @@ class App extends Component {
     }
   }
 
-  loadEvents = (events) => {
-    this.setState({
-      events
-    });
+  loadEvents = async (id) => {
+    const URL = 'http://192.168.0.11:7777/api/v1/activities';
+    // const URL = 'http://172.24.25.128:7777/api/v1/activities';
+    await axios.get(URL)
+      .then((response) => {
+
+        this.setState({
+          eventList: response.data
+        });
+      })
+      .catch(err => console.log(err))
+    
+    if(this.state.isLoggedIn){
+      let eventList = [...this.state.eventList];
+      for (const index in eventList){
+        for(const event of this.state.user.events){
+          if(event._id === eventList[index]._id){
+            eventList[index].bookmark = true;
+          }
+        }
+      }
+
+      this.setState({
+        eventList
+      });
+    }
   }
 
   findEvent(eventList, id) {
       return eventList.find(event => event._id === id);
   }
 
-  updateBookmark = (id) => {
+  updateBookmark = async (id) => {
       console.log('in update favorite');
-      let eventList = [...this.state.events];
+      let eventList = [...this.state.eventList];
       let singleEvent = this.findEvent(eventList, id);
       for (const event in eventList) {
           if (eventList[event]._id === singleEvent._id) {
@@ -178,32 +210,24 @@ class App extends Component {
               break;
           }
       }
+
       this.setState({
-          events: eventList
+          eventList
+      }, () => {
+        const user = {...this.state.user}
+        user.events = this.state.eventList.filter((event) => event.bookmark === true)
+        this.setState({
+          user
+        }, () => {
+          console.log(this.state.user);
+          const usersRef = db.ref().child(`users/${this.state.user.id}`);
+          usersRef.update({
+            "events": this.state.user.events
+          })
+        });
       });
-      console.log(this.state.events[0]);
-      console.log(this.state.events[1]);
+
   };
-
-    // need eventList, need bookmarkedEvents (find the event and filter it from that list)
-    // var array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
-
-    // var filtered = array.filter(function (value, index, arr) {
-
-    //     return value > 5;
-
-    // });
-
-    //filtered => [6, 7, 8, 9]
-    //array => [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
-
-    // addToBookmarks = () => {
-
-    // }
-
-    // removeFromBookMarks = () => {
-
-    // }
 
   render() {
     const screenProps = {
@@ -213,7 +237,8 @@ class App extends Component {
       logOut: this.logOut,
       user: this.state.user,
       loadEvents: this.loadEvents,
-      updateBookmark: this.updateBookmark
+      updateBookmark: this.updateBookmark,
+      eventList: this.state.eventList
     }
 
     return (

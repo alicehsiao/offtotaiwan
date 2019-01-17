@@ -19,13 +19,16 @@ class EventDetailScreen extends Component {
     };
 
     state = {
-        bookmark: false
+        bookmark: false,
+        isLoggedIn: false
     }
     
     componentDidMount() {
         const bookmark = this.props.navigation.getParam('bookmark', 'no bookmark');
+        const isLoggedIn = this.props.navigation.getParam('isLoggedIn', 'no isLoggedIn function');
         this.setState({
-            bookmark
+            bookmark,
+            isLoggedIn
         })
     }
 
@@ -46,17 +49,25 @@ class EventDetailScreen extends Component {
                 <RkCard rkType='article'>
                     <Image rkCardImg source={{uri: 'cks'}} />
                     <View>
+                        { this.state.isLoggedIn ? 
                         <Ionicons 
                             name="ios-bookmark" 
                             color={this.state.bookmark ? "#ac0d42" : "#fff"}
                             size={36} 
                             style={styles.iconStyle}
                             onPress={() => {
-                                updateBookmark(id);
-                                this.setState({
-                                    bookmark: !this.state.bookmark
-                                })
-                            }}/>
+                                    updateBookmark(id);
+                                    this.setState({
+                                        bookmark: !this.state.bookmark
+                                    })
+                            }}/> :
+                        <Ionicons 
+                            name="ios-bookmark" 
+                            color={this.state.bookmark ? "#ac0d42" : "#fff"}
+                            size={36} 
+                            style={styles.iconStyle}
+                            onPress={() => alert('Please login to bookmark this event.')}/>
+                        }
                     </View>
                     <View rkCardHeader>
                         <View>

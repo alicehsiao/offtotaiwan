@@ -35,7 +35,8 @@ class Router extends Component {
         logOut: this.props.screenProps.logOut,
         user: this.props.screenProps.user,
         loadEvents: this.props.screenProps.loadEvents,
-        updateBookmark: this.props.screenProps.updateBookmark
+        updateBookmark: this.props.screenProps.updateBookmark,
+        eventList: this.props.screenProps.eventList
     }
     return (
       <AppContainer screenProps={screenProps} ref={ navigatorRef => {

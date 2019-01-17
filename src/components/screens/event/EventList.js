@@ -9,36 +9,24 @@ import axios from 'axios';
 import { db } from '../../../../config/firebase';
 class EventList extends Component {
     state = {
-        events: [],
+        eventList: [],
         isReady: false
     }
     
-   async componentDidMount() {
-        const URL = 'http://192.168.0.11:7777/api/v1/activities';
-        // const URL = 'http://172.24.25.128:7777/api/v1/activities';
-        await axios.get(URL)
-            .then((response) => {
-
-                this.setState({
-                    events: response.data,
-                    isReady: true
-                });
-            })
-            .catch(err => console.log(err))
-        
-            let events = [...this.state.events];
-            events.forEach((event) => {
-                event.bookmark = false;
-            })
-            this.setState({
-                events
-            }, () => this.props.screenProps.loadEvents(this.state.events));
-
+    componentDidMount() {
+        this.setState({
+            eventList: this.props.screenProps.eventList,
+            isReady: true
+        })
     }
 
     renderEvents() {
-       return this.state.events.map(event => 
-            <EventCard key={event.name} event={event} updateBookmark={this.props.screenProps.updateBookmark}/>
+       return this.state.eventList.map(event => 
+            <EventCard 
+                key={event.name} 
+                event={event} 
+                updateBookmark={this.props.screenProps.updateBookmark} 
+                isLoggedIn={this.props.screenProps.isLoggedIn}/>
        );
     }
 

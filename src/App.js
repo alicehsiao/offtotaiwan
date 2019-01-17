@@ -44,8 +44,6 @@ class App extends Component {
     SplashScreen.hide();
   }
 
-  // then persisting the saved events in db and running a loop upon load to change bookmarks to true
-
   findUserInDatabase = async (name, email, provider) => {
      await db.ref().child("users").orderByChild("email").equalTo(email).once("value", async (snapshot) => {
        if (snapshot.exists()) {
@@ -168,7 +166,7 @@ class App extends Component {
     }
   }
 
-  loadEvents = async (id) => {
+  loadEvents = async () => {
     const URL = 'http://192.168.0.11:7777/api/v1/activities';
     // const URL = 'http://172.24.25.128:7777/api/v1/activities';
     await axios.get(URL)
@@ -201,7 +199,6 @@ class App extends Component {
   }
 
   updateBookmark = async (id) => {
-      console.log('in update favorite');
       let eventList = [...this.state.eventList];
       let singleEvent = this.findEvent(eventList, id);
       for (const event in eventList) {
@@ -219,14 +216,12 @@ class App extends Component {
         this.setState({
           user
         }, () => {
-          console.log(this.state.user);
           const usersRef = db.ref().child(`users/${this.state.user.id}`);
           usersRef.update({
             "events": this.state.user.events
           })
         });
       });
-
   };
 
   render() {
@@ -238,7 +233,8 @@ class App extends Component {
       user: this.state.user,
       loadEvents: this.loadEvents,
       updateBookmark: this.updateBookmark,
-      eventList: this.state.eventList
+      eventList: this.state.eventList,
+      bookmarkedEvents: this.state.user.events
     }
 
     return (

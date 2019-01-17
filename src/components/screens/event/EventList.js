@@ -5,7 +5,6 @@ import React, { Component } from 'react';
 import { View, ActivityIndicator, StyleSheet } from 'react-native';
 import { Container, Content } from 'native-base';
 import EventCard from './EventCard';
-import axios from 'axios';
 import { db } from '../../../../config/firebase';
 class EventList extends Component {
     state = {

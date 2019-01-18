@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Card, SocialIcon } from 'react-native-elements';
@@ -7,6 +6,7 @@ import AttractionCard from '../home/AttractionCard';
 import FoodJointCard from '../home/FoodJointCard';
 import HikeCard from '../home/HikeCard';
 import { Container, Content } from 'native-base';
+import PropTypes from 'prop-types';
 
 class HeartScreen extends Component {
     static navigationOptions = {
@@ -21,7 +21,6 @@ class HeartScreen extends Component {
     };
 
     renderHearts(heartedPlaces) {
-        // Return correct card based on type
         return heartedPlaces.map(place => {
             switch(place.category){
                 case "bike":
@@ -89,5 +88,16 @@ const styles = StyleSheet.create({
         width: 300
     }
 });
+
+HeartScreen.propTypes = {
+    screenProps: PropTypes.shape({
+        facebookLogin: PropTypes.func.isRequired,
+        googleLogin: PropTypes.func.isRequired,
+        isLoggedIn: PropTypes.bool.isRequired,
+        updateHeart: PropTypes.func.isRequired,
+        placeList: PropTypes.array.isRequired,
+        heartedPlaces: PropTypes.array
+    })
+}
 
 export { HeartScreen };

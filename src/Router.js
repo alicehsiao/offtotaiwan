@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 /* eslint-disable react/display-name */
 import React, { Component } from 'react';
 import { StatusBar } from 'react-native';
@@ -137,7 +136,10 @@ Router.propTypes = {
     user: PropTypes.object,
     updateBookmark: PropTypes.func.isRequired,
     eventList: PropTypes.array.isRequired,
-    bookmarkedEvents: PropTypes.array
+    bookmarkedEvents: PropTypes.array,
+    updateHeart: PropTypes.func.isRequired,
+    placeList: PropTypes.array.isRequired,
+    heartedPlaces: PropTypes.array
   })
 }
 

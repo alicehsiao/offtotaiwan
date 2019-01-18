@@ -16,6 +16,7 @@ class App extends Component {
     user: {
       id: '',
       name: '',
+      photoURL: '',
       email: '',
       hearts: [],
       provider: '',
@@ -30,7 +31,7 @@ class App extends Component {
       if (value !== null) {
         console.log("User is Logged In");
         const data = JSON.parse(value);
-        await this.findUserInDatabase(data.name, data.email, data.provider);
+        await this.findUserInDatabase(data.name, data.email, data.provider, data.photoURL);
       } else {
         console.log("User is Not Logged In");
       }
@@ -43,7 +44,7 @@ class App extends Component {
     SplashScreen.hide();
   }
 
-  findUserInDatabase = async (name, email, provider) => {
+  findUserInDatabase = async (name, email, provider, photoURL) => {
      await db.ref().child("users").orderByChild("email").equalTo(email).once("value", async (snapshot) => {
        if (snapshot.exists()) {
          // User exists in DB
@@ -57,6 +58,7 @@ class App extends Component {
                 email: data.email,
                 hearts: data.hearts || [],
                 events: data.events || [],
+                photoURL: data.photoURL
              },
              isLoggedIn: true,
              provider,
@@ -68,12 +70,14 @@ class App extends Component {
             name,
             email,
             provider,
+            photoURL,
           }).then(() => {
             this.setState({
               user: {
                 name,
                 email,
                 provider,
+                photoURL,
               },
               isLoggedIn: true
             })
@@ -118,6 +122,7 @@ class App extends Component {
       let currentUser = await firebaseApp.auth().signInAndRetrieveDataWithCredential(credential);
 
       await this.findUserInDatabase(currentUser.user.displayName, currentUser.user.email, "google");
+
       await AsyncStorage.setItem('user', JSON.stringify(currentUser.user));
 
       NavigationService.navigate('Home');

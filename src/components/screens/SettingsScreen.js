@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Image } from 'react-native';
 import { Card, SocialIcon, Button } from 'react-native-elements';
 import PropTypes from 'prop-types';
 
@@ -17,11 +17,16 @@ class SettingsScreen extends Component {
 
     render(){
         const { isLoggedIn, user, logOut, facebookLogin, googleLogin } = this.props.screenProps;
+        console.log(user.photoURL);
         return(
             <View style={styles.outerContainer}>
                 { isLoggedIn ?
                      <Card title={user.name} containerStyle={styles.cardContainer}>
                         <View>
+                            <Image
+                                style={{width: 50, height: 50, borderRadius: 20, alignSelf: 'center'}}
+                                source={{uri: user.photoURL}}
+                            />
                             <Text style={styles.emailStyle}>
                                 alice@gmail.com
                             </Text>
@@ -59,7 +64,8 @@ const styles = StyleSheet.create({
     },
     emailStyle: {
         marginBottom: 10, 
-        textAlign: 'center'
+        textAlign: 'center',
+        marginTop: 10
     },
     logoutStyle: {
         marginTop: 10, 
@@ -73,7 +79,9 @@ SettingsScreen.propTypes = {
     googleLogin: PropTypes.func.isRequired,
     isLoggedIn: PropTypes.bool.isRequired,
     logOut: PropTypes.func.isRequired,
-    user: PropTypes.object
+    user: PropTypes.shape({
+        photoURL: PropTypes.string
+    })
   })
 }
 

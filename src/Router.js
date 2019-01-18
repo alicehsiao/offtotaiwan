@@ -37,7 +37,13 @@ class Router extends Component {
         user: this.props.screenProps.user,
         updateBookmark: this.props.screenProps.updateBookmark,
         eventList: this.props.screenProps.eventList,
-        bookmarkedEvents: this.props.screenProps.bookmarkedEvents
+        bookmarkedEvents: this.props.screenProps.bookmarkedEvents,
+        updateHeart: this.props.screenProps.updateHeart,
+        heartedPlaces: this.props.screenProps.hearts,
+        hikeList: this.props.screenProps.hikeList,
+        bikeList: this.props.screenProps.bikeList,
+        eatList: this.props.screenProps.eatList,
+        exploreList: this.props.screenProps.exploreList
     }
     return (
       <AppContainer screenProps={screenProps} ref={ navigatorRef => {
@@ -72,7 +78,11 @@ const EventsStack = createStackNavigator({
 });
 
 const HeartStack = createStackNavigator({
-  Heart: HeartScreen
+  Heart: HeartScreen,
+  AttractionDetails: AttractionDetailScreen,
+  BikeDetails: BikeDetailScreen,
+  HikeDetails: HikeDetailScreen,
+  FoodJointDetails: FoodJointDetailScreen,
 });
 
 

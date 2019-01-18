@@ -22,7 +22,11 @@ class App extends Component {
       provider: '',
       events: []
     },
-    eventList: []
+    eventList: [],
+    hikeList: [],
+    bikeList: [],
+    eatList: [],
+    exploreList: []
   }
 
   async componentDidMount(){
@@ -40,6 +44,10 @@ class App extends Component {
     }
 
     await this.loadEvents();
+    await this.loadHikes();
+    await this.loadBikePaths();
+    await this.loadFoodJoints();
+    await this.loadAttractions();
 
     SplashScreen.hide();
   }
@@ -170,6 +178,110 @@ class App extends Component {
     }
   }
 
+  loadHikes = async () => {
+      const URL = 'https://off-to-taiwan.herokuapp.com/api/v1/hikingtrails';
+      axios.get(URL)
+        .then(response => {
+          this.setState({
+            hikeList: response.data
+          });
+        })
+        .catch(err => console.log(err))
+
+      if(this.state.isLoggedIn){
+        let hikeList = [...this.state.hikeList];
+        for (const index in hikeList){
+          for(const heart of this.state.user.hearts){
+            if(heart._id === hikeList[index]._id){
+              hikeList[index].heart = true;
+            }
+          }
+        }
+
+        this.setState({
+          hikeList
+        });
+      }
+  }
+
+  loadBikePaths = async () => {
+    const URL = 'https://off-to-taiwan.herokuapp.com/api/v1/bikepaths';
+    axios.get(URL)
+      .then(response => {
+        this.setState({
+          bikeList: response.data
+        });
+      })
+      .catch(err => console.log(err))
+    
+    if(this.state.isLoggedIn){
+      let bikeList = [...this.state.bikeList];
+      for (const index in bikeList){
+        for(const heart of this.state.user.hearts){
+          if(heart._id === bikeList[index]._id){
+            bikeList[index].heart = true;
+          }
+        }
+      }
+
+      this.setState({
+        bikeList
+      });
+    }
+  }
+
+  loadFoodJoints = async () => {
+    const URL = 'https://off-to-taiwan.herokuapp.com/api/v1/foodjoints';
+    axios.get(URL)
+      .then(response => {
+        this.setState({
+          eatList: response.data
+        });
+      })
+      .catch(err => console.log(err))
+    
+    if(this.state.isLoggedIn){
+      let eatList = [...this.state.eatList];
+      for (const index in eatList){
+        for(const heart of this.state.user.hearts){
+          if(heart._id === eatList[index]._id){
+            eatList[index].heart = true;
+          }
+        }
+      }
+
+      this.setState({
+        eatList
+      });
+    }
+  }
+
+  loadAttractions = async () => {
+    const URL = 'https://off-to-taiwan.herokuapp.com/api/v1/attractions';
+    axios.get(URL)
+      .then(response => {
+        this.setState({
+          exploreList: response.data
+        });
+      })
+      .catch(err => console.log(err))
+    
+    if(this.state.isLoggedIn){
+      let exploreList = [...this.state.exploreList];
+      for (const index in exploreList){
+        for(const heart of this.state.user.hearts){
+          if(heart._id === exploreList[index]._id){
+            exploreList[index].heart = true;
+          }
+        }
+      }
+
+      this.setState({
+        exploreList
+      });
+    }
+  }
+
   loadEvents = async () => {
     const URL = 'https://off-to-taiwan.herokuapp.com/api/v1/activities';
     await axios.get(URL)
@@ -227,6 +339,10 @@ class App extends Component {
       });
   };
 
+  updateHeart = async (id) => {
+
+  }
+
   render() {
     const screenProps = {
       facebookLogin: this.facebookLogin,
@@ -236,7 +352,13 @@ class App extends Component {
       user: this.state.user,
       updateBookmark: this.updateBookmark,
       eventList: this.state.eventList,
-      bookmarkedEvents: this.state.user.events
+      bookmarkedEvents: this.state.user.events,
+      updateHeart: this.updateHeart,
+      heartedPlaces: this.state.user.hearts,
+      hikeList: this.state.hikeList,
+      bikeList: this.state.bikeList,
+      eatList: this.state.eatList,
+      exploreList: this.state.exploreList
     }
 
     return (

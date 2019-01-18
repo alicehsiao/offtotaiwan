@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ScrollView, ActivityIndicator, View, StyleSheet } from 'react-native';
 import FoodJointCard from './FoodJointCard';
-import axios from 'axios';
+import PropTypes from 'prop-types';
 
 class FoodJointScreen extends Component {
     static navigationOptions = {
@@ -16,25 +16,24 @@ class FoodJointScreen extends Component {
     };
 
     state = {
-        foodJoints: [],
+        eatList: [],
         isReady: false
     };
 
     componentDidMount() {
-        const URL = 'https://off-to-taiwan.herokuapp.com/api/v1/foodjoints';
-        axios.get(URL)
-            .then(response => {
-                this.setState({
-                    foodJoints: response.data,
-                    isReady: true
-                });
-            })
-            .catch(err => console.log(err))
+        this.setState({
+            eatList: this.props.screenProps.eatList,
+            isReady: true
+        })
     }
 
     renderFoodJoints() {
-       return this.state.foodJoints.map(place => 
-            <FoodJointCard key={place.name} place={place}/>
+       return this.state.eatList.map(place => 
+            <FoodJointCard 
+                key={place.name} 
+                place={place}
+                updateHeart={this.props.screenProps.updateHeart} 
+                isLoggedIn={this.props.screenProps.isLoggedIn}/>
        );
     }
 
@@ -70,5 +69,13 @@ const styles = StyleSheet.create({
         height: 80
     }
 });
+
+FoodJointScreen.propTypes = {
+    screenProps: PropTypes.shape({
+        isLoggedIn: PropTypes.bool.isRequired,
+        updateHeart: PropTypes.func.isRequired,
+        eatList: PropTypes.array.isRequired
+    })
+}
 
 export { FoodJointScreen };

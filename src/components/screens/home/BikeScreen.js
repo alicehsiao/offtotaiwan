@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ScrollView, ActivityIndicator, View, StyleSheet } from 'react-native';
 import BikeCard from './BikeCard';
-import axios from 'axios';
+import PropTypes from 'prop-types';
 
 class BikeScreen extends Component {
     static navigationOptions = {
@@ -16,25 +16,24 @@ class BikeScreen extends Component {
     };
 
     state = {
-        bikes: [],
+        bikeList: [],
         isReady: false
     };
 
     componentDidMount() {
-        const URL = 'https://off-to-taiwan.herokuapp.com/api/v1/bikepaths';
-        axios.get(URL)
-            .then(response => {
-                this.setState({
-                    bikes: response.data,
-                    isReady: true
-                });
-            })
-            .catch(err => console.log(err))
+        this.setState({
+            bikeList: this.props.screenProps.bikeList,
+            isReady: true
+        })
     }
 
-    renderFoodJoints() {
-       return this.state.bikes.map(place => 
-            <BikeCard key={place.name} place={place}/>
+    renderBikePaths() {
+       return this.state.bikeList.map(place => 
+            <BikeCard 
+                key={place.name} 
+                place={place}
+                updateHeart={this.props.screenProps.updateHeart} 
+                isLoggedIn={this.props.screenProps.isLoggedIn}/>
        );
     }
 
@@ -43,7 +42,7 @@ class BikeScreen extends Component {
             <ScrollView>
                 {
                     this.state.isReady ? 
-                    this.renderFoodJoints() : 
+                    this.renderBikePaths() : 
                     <View style = {styles.container}>
                         <ActivityIndicator
                             color = '#ac0d42'
@@ -70,5 +69,13 @@ const styles = StyleSheet.create({
         height: 80
     }
 });
+
+BikeScreen.propTypes = {
+    screenProps: PropTypes.shape({
+        isLoggedIn: PropTypes.bool.isRequired,
+        updateHeart: PropTypes.func.isRequired,
+        bikeList: PropTypes.array.isRequired
+    })
+}
 
 export { BikeScreen };

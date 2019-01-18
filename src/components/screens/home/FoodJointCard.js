@@ -1,6 +1,5 @@
 import React from 'react';
 import { TouchableOpacity, StyleSheet } from 'react-native';
-// import { Icon } from 'react-native-elements';
 import { Card, CardItem, Text, Body, Thumbnail, Left } from 'native-base';
 import NavigationService from '../../../NavigationService';
 import PropTypes from 'prop-types';
@@ -10,7 +9,7 @@ class FoodJointCard extends React.Component {
     render(){
         const { name, address, engName } = this.props.place;
         return (
-            <TouchableOpacity delayPressIn={50} onPress={() => NavigationService.navigate('FoodJointDetails', {...this.props.place})}>
+            <TouchableOpacity delayPressIn={50} onPress={() => NavigationService.navigate('FoodJointDetails', {...this.props.place, updateHeart: this.props.updateHeart, isLoggedIn: this.props.isLoggedIn})}>
                 <Card>
                     <CardItem>
                         <Left>
@@ -39,15 +38,9 @@ FoodJointCard.propTypes = {
         name: PropTypes.string,
         engName: PropTypes.string,
         address: PropTypes.string
-    })
+    }),
+    isLoggedIn: PropTypes.bool.isRequired,
+    updateHeart: PropTypes.func.isRequired
 }
 
 export default FoodJointCard;
-
-
-{/* <Icon
-    name='ios-heart-empty'
-    type='ionicon'
-    color='#517fa4'
-    onPress={()=>alert('Hearted')}
-/> */}

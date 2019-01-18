@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { Card, SocialIcon } from 'react-native-elements';
+import HikeCard from '../home/HikeCard';
 
 class HeartScreen extends Component {
     static navigationOptions = {
@@ -15,12 +16,23 @@ class HeartScreen extends Component {
         }
     };
 
+    renderHearts(heartedPlaces) {
+        return heartedPlaces.map(place => 
+            // Return correct card depending on category
+                <HikeCard 
+                    key={place.name} 
+                    event={place} 
+                    updateHeart={this.props.screenProps.updateHeart} 
+                    isLoggedIn={this.props.screenProps.isLoggedIn}/>
+        );
+    }
+
     render(){
-        const { isLoggedIn, facebookLogin, googleLogin } = this.props.screenProps;
+        const { isLoggedIn, facebookLogin, googleLogin, heartedPlaces } = this.props.screenProps;
         return(
             <View style={styles.outerContainer}>
                 { isLoggedIn ?
-                     <Text>List of Favorites</Text>
+                     this.renderEvents(heartedPlaces)
                      :
                      <Card title="Login to Add Favorites!" containerStyle={styles.cardContainer}>
                         <SocialIcon

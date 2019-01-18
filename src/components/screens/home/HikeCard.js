@@ -1,6 +1,5 @@
 import React from 'react';
 import { TouchableOpacity, StyleSheet } from 'react-native';
-// import { Icon } from 'react-native-elements';
 import { Card, CardItem, Text, Body, Thumbnail, Left } from 'native-base';
 import NavigationService from '../../../NavigationService';
 import PropTypes from 'prop-types';
@@ -10,7 +9,7 @@ class HikeCard extends React.Component {
     render(){
         const { name, distanceKM, engName } = this.props.place;
         return (
-            <TouchableOpacity delayPressIn={50} onPress={() => NavigationService.navigate('HikeDetails', {...this.props.place})}>
+            <TouchableOpacity delayPressIn={50} onPress={() => NavigationService.navigate('HikeDetails', {...this.props.place, updateHeart: this.props.updateHeart, isLoggedIn: this.props.isLoggedIn})}>
                 <Card>
                     <CardItem>
                         <Left>
@@ -39,15 +38,9 @@ HikeCard.propTypes = {
         name: PropTypes.string,
         distanceKM: PropTypes.number,
         engName: PropTypes.string
-    })
+    }),
+    isLoggedIn: PropTypes.bool.isRequired,
+    updateHeart: PropTypes.func.isRequired
 }
 
 export default HikeCard;
-
-
-{/* <Icon
-    name='ios-heart-empty'
-    type='ionicon'
-    color='#517fa4'
-    onPress={()=>alert('Hearted')}
-/> */}

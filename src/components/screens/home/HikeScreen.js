@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ScrollView, ActivityIndicator, View, StyleSheet } from 'react-native';
 import HikeCard from './HikeCard';
-import axios from 'axios';
+import PropTypes from 'prop-types';
 
 class HikeScreen extends Component {
     static navigationOptions = {
@@ -16,25 +16,24 @@ class HikeScreen extends Component {
     };
 
     state = {
-        hikes: [],
+        hikeList: [],
         isReady: false
     };
 
     componentDidMount() {
-        const URL = 'https://off-to-taiwan.herokuapp.com/api/v1/hikingtrails';
-        axios.get(URL)
-            .then(response => {
-                this.setState({
-                    hikes: response.data,
-                    isReady: true
-                });
-            })
-            .catch(err => console.log(err))
+        this.setState({
+            hikeList: this.props.screenProps.hikeList,
+            isReady: true
+        })
     }
 
-    renderFoodJoints() {
-       return this.state.hikes.map(place => 
-            <HikeCard key={place.name} place={place}/>
+    renderHikes() {
+       return this.state.hikeList.map(place => 
+            <HikeCard 
+                key={place.name} 
+                place={place}
+                updateHeart={this.props.screenProps.updateHeart} 
+                isLoggedIn={this.props.screenProps.isLoggedIn}/>
        );
     }
 
@@ -43,7 +42,7 @@ class HikeScreen extends Component {
             <ScrollView>
                 {
                     this.state.isReady ? 
-                    this.renderFoodJoints() : 
+                    this.renderHikes() : 
                     <View style = {styles.container}>
                         <ActivityIndicator
                             color = '#ac0d42'
@@ -70,5 +69,13 @@ const styles = StyleSheet.create({
         height: 80
     }
 });
+
+HikeScreen.propTypes = {
+    screenProps: PropTypes.shape({
+        isLoggedIn: PropTypes.bool.isRequired,
+        updateHeart: PropTypes.func.isRequired,
+        hikeList: PropTypes.array.isRequired
+    })
+}
 
 export { HikeScreen };

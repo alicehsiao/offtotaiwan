@@ -4,6 +4,7 @@ import { RkCard } from 'react-native-ui-kitten';
 import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
 import axios from 'axios';
 import Config from 'react-native-config';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 class HikeDetailScreen extends React.Component {
     static navigationOptions = {
@@ -27,13 +28,17 @@ class HikeDetailScreen extends React.Component {
                 longitude: 0
             }
         },
-        isReady: false
+        isReady: false,
+        heart: false,
+        isLoggedIn: false
     }
 
     async componentDidMount() {
         const { navigation } = this.props;
         const placeId = navigation.getParam('place_id', 'no place id');
         const engName = navigation.getParam('engName', 'no name');
+        const heart = this.props.navigation.getParam('heart', 'no heart');
+        const isLoggedIn = this.props.navigation.getParam('isLoggedIn', 'no isLoggedIn function');
 
         const URL = `https://maps.googleapis.com/maps/api/place/details/json?key=${Config.GOOGLE_API_KEY}&placeid=${placeId}`
         const res = encodeURI(URL);
@@ -50,7 +55,9 @@ class HikeDetailScreen extends React.Component {
                             longitude: response.data.result.geometry.location.lng
                         }
                     },
-                    isReady: true
+                    isReady: true,
+                    heart,
+                    isLoggedIn
                 })
             })
             .catch(err => console.log(err))
@@ -61,6 +68,8 @@ class HikeDetailScreen extends React.Component {
         const engName = navigation.getParam('engName', 'no name');
         const name = navigation.getParam('name', 'no name');
         const distance = navigation.getParam('distanceKM', 'no distance');
+        const id = navigation.getParam('_id', 'no id');
+        const updateHeart = navigation.getParam('updateHeart', 'no callback');
         
         return (
                 <ScrollView>
@@ -97,6 +106,27 @@ class HikeDetailScreen extends React.Component {
                                         {engName}   
                                     </Text>
                                     <Text>{name}</Text>
+                                </View>
+                                <View>
+                                    { this.state.isLoggedIn ? 
+                                    <Ionicons 
+                                        name={this.state.heart ? 'ios-heart' : 'ios-heart-empty'}
+                                        color="#ac0d42"
+                                        size={32} 
+                                        style={styles.iconStyle}
+                                        onPress={() => {
+                                                updateHeart(id);
+                                                this.setState({
+                                                    heart: !this.state.heart
+                                                })
+                                        }}/> :
+                                    <Ionicons 
+                                        name="ios-heart-empty" 
+                                        color="#ac0d42"
+                                        size={32} 
+                                        style={styles.iconStyle}
+                                        onPress={() => alert('Please login to heart this event.')}/>
+                                    }
                                 </View>
                             </View>
                             <View rkCardContent>
@@ -147,6 +177,11 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         height: 80
+    },
+    iconStyle: {
+        position: 'absolute',
+        right: 10,
+        top: 0
     }
 });
 

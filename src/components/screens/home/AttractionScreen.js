@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ScrollView, ActivityIndicator, View, StyleSheet } from 'react-native';
 import AttractionCard from './AttractionCard';
-import axios from 'axios';
+import PropTypes from 'prop-types';
 
 class AttractionScreen extends Component {
     static navigationOptions = {
@@ -16,25 +16,24 @@ class AttractionScreen extends Component {
     };
 
     state = {
-        attractions: [],
+        exploreList: [],
         isReady: false
     };
 
     componentDidMount() {
-        const URL = 'https://off-to-taiwan.herokuapp.com/api/v1/attractions';
-        axios.get(URL)
-            .then(response => {
-                this.setState({
-                    attractions: response.data,
-                    isReady: true
-                });
-            })
-            .catch(err => console.log(err))
+        this.setState({
+            exploreList: this.props.screenProps.exploreList,
+            isReady: true
+        })
     }
 
-    renderFoodJoints() {
-       return this.state.attractions.map(place => 
-            <AttractionCard key={place.name} place={place}/>
+    renderAttractions() {
+       return this.state.exploreList.map(place => 
+            <AttractionCard 
+                key={place.name} 
+                place={place}
+                updateHeart={this.props.screenProps.updateHeart} 
+                isLoggedIn={this.props.screenProps.isLoggedIn}/>
        );
     }
 
@@ -43,7 +42,7 @@ class AttractionScreen extends Component {
             <ScrollView>
                 {
                     this.state.isReady ? 
-                    this.renderFoodJoints() : 
+                    this.renderAttractions() : 
                     <View style = {styles.container}>
                         <ActivityIndicator
                             color = '#ac0d42'
@@ -70,5 +69,13 @@ const styles = StyleSheet.create({
         height: 80
     }
 });
+
+AttractionScreen.propTypes = {
+    screenProps: PropTypes.shape({
+        isLoggedIn: PropTypes.bool.isRequired,
+        updateHeart: PropTypes.func.isRequired,
+        exploreList: PropTypes.array.isRequired
+    })
+}
 
 export { AttractionScreen };

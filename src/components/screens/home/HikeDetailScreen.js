@@ -125,7 +125,7 @@ class HikeDetailScreen extends React.Component {
                                         color="#ac0d42"
                                         size={32} 
                                         style={styles.iconStyle}
-                                        onPress={() => alert('Please login to heart this event.')}/>
+                                        onPress={() => alert('Please login to save this place.')}/>
                                     }
                                 </View>
                             </View>

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/display-name */
 import React, { Component } from 'react';
 import { StatusBar } from 'react-native';

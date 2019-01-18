@@ -16,19 +16,19 @@ class FoodJointScreen extends Component {
     };
 
     state = {
-        eatList: [],
+        placeList: [],
         isReady: false
     };
 
     componentDidMount() {
         this.setState({
-            eatList: this.props.screenProps.eatList,
+            placeList: this.props.screenProps.placeList.filter(place => place.category === "eat"),
             isReady: true
         })
     }
 
     renderFoodJoints() {
-       return this.state.eatList.map(place => 
+       return this.state.placeList.map(place => 
             <FoodJointCard 
                 key={place.name} 
                 place={place}
@@ -74,7 +74,7 @@ FoodJointScreen.propTypes = {
     screenProps: PropTypes.shape({
         isLoggedIn: PropTypes.bool.isRequired,
         updateHeart: PropTypes.func.isRequired,
-        eatList: PropTypes.array.isRequired
+        placeList: PropTypes.array.isRequired
     })
 }
 

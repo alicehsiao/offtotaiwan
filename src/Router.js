@@ -39,11 +39,8 @@ class Router extends Component {
         eventList: this.props.screenProps.eventList,
         bookmarkedEvents: this.props.screenProps.bookmarkedEvents,
         updateHeart: this.props.screenProps.updateHeart,
-        heartedPlaces: this.props.screenProps.hearts,
-        hikeList: this.props.screenProps.hikeList,
-        bikeList: this.props.screenProps.bikeList,
-        eatList: this.props.screenProps.eatList,
-        exploreList: this.props.screenProps.exploreList
+        heartedPlaces: this.props.screenProps.heartedPlaces,
+        placeList: this.props.screenProps.placeList
     }
     return (
       <AppContainer screenProps={screenProps} ref={ navigatorRef => {

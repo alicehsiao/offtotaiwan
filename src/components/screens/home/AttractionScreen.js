@@ -16,19 +16,19 @@ class AttractionScreen extends Component {
     };
 
     state = {
-        exploreList: [],
+        placeList: [],
         isReady: false
     };
 
     componentDidMount() {
         this.setState({
-            exploreList: this.props.screenProps.exploreList,
+            placeList: this.props.screenProps.placeList.filter(place => place.category === "explore"),
             isReady: true
         })
     }
 
     renderAttractions() {
-       return this.state.exploreList.map(place => 
+       return this.state.placeList.map(place => 
             <AttractionCard 
                 key={place.name} 
                 place={place}
@@ -74,7 +74,7 @@ AttractionScreen.propTypes = {
     screenProps: PropTypes.shape({
         isLoggedIn: PropTypes.bool.isRequired,
         updateHeart: PropTypes.func.isRequired,
-        exploreList: PropTypes.array.isRequired
+        placeList: PropTypes.array.isRequired
     })
 }
 

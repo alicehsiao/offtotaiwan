@@ -16,19 +16,19 @@ class HikeScreen extends Component {
     };
 
     state = {
-        hikeList: [],
+        placeList: [],
         isReady: false
     };
 
     componentDidMount() {
         this.setState({
-            hikeList: this.props.screenProps.hikeList,
+            placeList: this.props.screenProps.placeList.filter(place => place.category === "hike"),
             isReady: true
         })
     }
 
     renderHikes() {
-       return this.state.hikeList.map(place => 
+       return this.state.placeList.map(place => 
             <HikeCard 
                 key={place.name} 
                 place={place}
@@ -74,7 +74,7 @@ HikeScreen.propTypes = {
     screenProps: PropTypes.shape({
         isLoggedIn: PropTypes.bool.isRequired,
         updateHeart: PropTypes.func.isRequired,
-        hikeList: PropTypes.array.isRequired
+        placeList: PropTypes.array.isRequired
     })
 }
 

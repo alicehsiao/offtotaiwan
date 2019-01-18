@@ -16,19 +16,19 @@ class BikeScreen extends Component {
     };
 
     state = {
-        bikeList: [],
+        placeList: [],
         isReady: false
     };
 
     componentDidMount() {
         this.setState({
-            bikeList: this.props.screenProps.bikeList,
+            placeList: this.props.screenProps.placeList.filter(place => place.category === "bike"),
             isReady: true
         })
     }
 
     renderBikePaths() {
-       return this.state.bikeList.map(place => 
+       return this.state.placeList.map(place => 
             <BikeCard 
                 key={place.name} 
                 place={place}
@@ -74,7 +74,7 @@ BikeScreen.propTypes = {
     screenProps: PropTypes.shape({
         isLoggedIn: PropTypes.bool.isRequired,
         updateHeart: PropTypes.func.isRequired,
-        bikeList: PropTypes.array.isRequired
+        placeList: PropTypes.array.isRequired
     })
 }
 

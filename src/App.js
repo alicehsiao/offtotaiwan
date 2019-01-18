@@ -23,10 +23,7 @@ class App extends Component {
       events: []
     },
     eventList: [],
-    hikeList: [],
-    bikeList: [],
-    eatList: [],
-    exploreList: []
+    placeList: []
   }
 
   async componentDidMount(){
@@ -44,10 +41,7 @@ class App extends Component {
     }
 
     await this.loadEvents();
-    await this.loadHikes();
-    await this.loadBikePaths();
-    await this.loadFoodJoints();
-    await this.loadAttractions();
+    await this.loadPlaces();
 
     SplashScreen.hide();
   }
@@ -178,106 +172,35 @@ class App extends Component {
     }
   }
 
-  loadHikes = async () => {
-      const URL = 'https://off-to-taiwan.herokuapp.com/api/v1/hikingtrails';
-      axios.get(URL)
+  loadPlaces = async () => {
+    const places = ["hikingtrails", "bikepaths", "foodjoints", "attractions"]
+    for (const place of places) {
+      const URL = `https://off-to-taiwan.herokuapp.com/api/v1/${place}`;
+      let placeList = [...this.state.placeList]
+      await axios.get(URL)
         .then(response => {
+          for (const place of response.data){
+            placeList.push(place);
+          }
           this.setState({
-            hikeList: response.data
+            placeList,
           });
         })
         .catch(err => console.log(err))
-
-      if(this.state.isLoggedIn){
-        let hikeList = [...this.state.hikeList];
-        for (const index in hikeList){
-          for(const heart of this.state.user.hearts){
-            if(heart._id === hikeList[index]._id){
-              hikeList[index].heart = true;
-            }
-          }
-        }
-
-        this.setState({
-          hikeList
-        });
-      }
-  }
-
-  loadBikePaths = async () => {
-    const URL = 'https://off-to-taiwan.herokuapp.com/api/v1/bikepaths';
-    axios.get(URL)
-      .then(response => {
-        this.setState({
-          bikeList: response.data
-        });
-      })
-      .catch(err => console.log(err))
-    
-    if(this.state.isLoggedIn){
-      let bikeList = [...this.state.bikeList];
-      for (const index in bikeList){
-        for(const heart of this.state.user.hearts){
-          if(heart._id === bikeList[index]._id){
-            bikeList[index].heart = true;
-          }
-        }
-      }
-
-      this.setState({
-        bikeList
-      });
     }
-  }
-
-  loadFoodJoints = async () => {
-    const URL = 'https://off-to-taiwan.herokuapp.com/api/v1/foodjoints';
-    axios.get(URL)
-      .then(response => {
-        this.setState({
-          eatList: response.data
-        });
-      })
-      .catch(err => console.log(err))
     
     if(this.state.isLoggedIn){
-      let eatList = [...this.state.eatList];
-      for (const index in eatList){
+      let placeList = [...this.state.placeList];
+      for (const index in placeList){
         for(const heart of this.state.user.hearts){
-          if(heart._id === eatList[index]._id){
-            eatList[index].heart = true;
+          if(heart._id === placeList[index]._id){
+            placeList[index].heart = true;
           }
         }
       }
 
       this.setState({
-        eatList
-      });
-    }
-  }
-
-  loadAttractions = async () => {
-    const URL = 'https://off-to-taiwan.herokuapp.com/api/v1/attractions';
-    axios.get(URL)
-      .then(response => {
-        this.setState({
-          exploreList: response.data
-        });
-      })
-      .catch(err => console.log(err))
-    
-    if(this.state.isLoggedIn){
-      let exploreList = [...this.state.exploreList];
-      for (const index in exploreList){
-        for(const heart of this.state.user.hearts){
-          if(heart._id === exploreList[index]._id){
-            exploreList[index].heart = true;
-          }
-        }
-      }
-
-      this.setState({
-        exploreList
+        placeList
       });
     }
   }
@@ -339,8 +262,35 @@ class App extends Component {
       });
   };
 
-  updateHeart = async (id) => {
 
+  findPlace(placeList, id) {
+    return placeList.find(place => place._id === id);
+  }
+
+  updateHeart = async (id) => {
+    let placeList = [...this.state.placeList];
+    let singlePlace = this.findPlace(placeList, id);
+    for (const place in placeList) {
+        if (placeList[place]._id === singlePlace._id) {
+            placeList[place].heart = !placeList[place].heart;
+            break;
+        }
+    }
+
+    this.setState({
+        placeList
+    }, () => {
+      const user = {...this.state.user}
+      user.hearts = this.state.placeList.filter((place) => place.heart === true)
+      this.setState({
+        user
+      }, () => {
+        const usersRef = db.ref().child(`users/${this.state.user.id}`);
+        usersRef.update({
+          "hearts": this.state.user.hearts
+        })
+      });
+    });
   }
 
   render() {
@@ -354,11 +304,8 @@ class App extends Component {
       eventList: this.state.eventList,
       bookmarkedEvents: this.state.user.events,
       updateHeart: this.updateHeart,
-      heartedPlaces: this.state.user.hearts,
-      hikeList: this.state.hikeList,
-      bikeList: this.state.bikeList,
-      eatList: this.state.eatList,
-      exploreList: this.state.exploreList
+      placeList: this.state.placeList,
+      heartedPlaces: this.state.user.hearts
     }
 
     return (

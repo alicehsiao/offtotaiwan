@@ -2,7 +2,11 @@
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Card, SocialIcon } from 'react-native-elements';
+import BikeCard from '../home/BikeCard';
+import AttractionCard from '../home/AttractionCard';
+import FoodJointCard from '../home/FoodJointCard';
 import HikeCard from '../home/HikeCard';
+import { Container, Content } from 'native-base';
 
 class HeartScreen extends Component {
     static navigationOptions = {
@@ -17,37 +21,62 @@ class HeartScreen extends Component {
     };
 
     renderHearts(heartedPlaces) {
-        return heartedPlaces.map(place => 
-            // Return correct card depending on category
-                <HikeCard 
-                    key={place.name} 
-                    event={place} 
-                    updateHeart={this.props.screenProps.updateHeart} 
-                    isLoggedIn={this.props.screenProps.isLoggedIn}/>
-        );
+        // Return correct card based on type
+        return heartedPlaces.map(place => {
+            switch(place.category){
+                case "bike":
+                    return <BikeCard 
+                                key={place.name} 
+                                place={place} 
+                                updateHeart={this.props.screenProps.updateHeart} 
+                                isLoggedIn={this.props.screenProps.isLoggedIn}/>
+                case "eat":
+                    return <FoodJointCard 
+                                key={place.name} 
+                                place={place} 
+                                updateHeart={this.props.screenProps.updateHeart} 
+                                isLoggedIn={this.props.screenProps.isLoggedIn}/>
+                case "hike":
+                    return <HikeCard 
+                                key={place.name} 
+                                place={place} 
+                                updateHeart={this.props.screenProps.updateHeart} 
+                                isLoggedIn={this.props.screenProps.isLoggedIn}/>
+                case "explore":
+                    return <AttractionCard 
+                                key={place.name} 
+                                place={place} 
+                                updateHeart={this.props.screenProps.updateHeart} 
+                                isLoggedIn={this.props.screenProps.isLoggedIn}/>
+            } 
+        });
     }
 
     render(){
         const { isLoggedIn, facebookLogin, googleLogin, heartedPlaces } = this.props.screenProps;
         return(
-            <View style={styles.outerContainer}>
-                { isLoggedIn ?
-                     this.renderEvents(heartedPlaces)
-                     :
-                     <Card title="Login to Add Favorites!" containerStyle={styles.cardContainer}>
-                        <SocialIcon
-                            title = 'Sign In With Facebook'
-                            button
-                            type='facebook' 
-                            onPress = { () => facebookLogin()}/>
-                        <SocialIcon
-                            title = 'Sign In With Google'
-                            button
-                            type = 'google-plus-official'
-                            onPress = {() => googleLogin()}/>
-                     </Card>
-                }
-            </View>
+            <Container>
+                <Content>
+                    { isLoggedIn ?
+                        this.renderHearts(heartedPlaces)
+                        :
+                        <View style={styles.outerContainer}>
+                            <Card title="Login to Add Favorites!" containerStyle={styles.cardContainer}>
+                                <SocialIcon
+                                    title = 'Sign In With Facebook'
+                                    button
+                                    type='facebook' 
+                                    onPress = { () => facebookLogin()}/>
+                                <SocialIcon
+                                    title = 'Sign In With Google'
+                                    button
+                                    type = 'google-plus-official'
+                                    onPress = {() => googleLogin()}/>
+                            </Card>
+                        </View>
+                    }
+                </Content>
+            </Container>
         )
     }
 }

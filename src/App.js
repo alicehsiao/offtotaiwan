@@ -30,11 +30,9 @@ class App extends Component {
     try {
       const value = await AsyncStorage.getItem('user');
       if (value !== null) {
-        console.log("User is Logged In");
         const data = JSON.parse(value);
         await this.findUserInDatabase(data.name, data.email, data.provider, data.photoURL);
       } else {
-        console.log("User is Not Logged In");
       }
     } catch (error) {
       console.log('Error Retrieving Data');
@@ -236,7 +234,7 @@ class App extends Component {
       return eventList.find(event => event._id === id);
   }
 
-  updateBookmark = async (id) => {
+  updateBookmark = (id) => {
       let eventList = [...this.state.eventList];
       let singleEvent = this.findEvent(eventList, id);
       for (const event in eventList) {
@@ -267,7 +265,7 @@ class App extends Component {
     return placeList.find(place => place._id === id);
   }
 
-  updateHeart = async (id) => {
+  updateHeart = (id) => {
     let placeList = [...this.state.placeList];
     let singlePlace = this.findPlace(placeList, id);
     for (const place in placeList) {

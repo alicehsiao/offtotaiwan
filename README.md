@@ -24,3 +24,8 @@
 
 ### Screenshots
 ![Home Screen](./public/images/home.png)
+![Search Screen](./public/images/search.png)
+![Events Screen](./public/images/events.png)
+![Favorites Screen](./public/images/favorites.png)
+![Details Screen](./public/images/details.png)
+![Settings Screen](./public/images/settings.png)

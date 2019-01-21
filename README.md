@@ -1,5 +1,5 @@
 # **Capstone Project: Off To Taiwan**
-## React Native Front End
+## React Native with Firebase
 
 ### Tools/Packages Used
 - React Navigation

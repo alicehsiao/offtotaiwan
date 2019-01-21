@@ -13,7 +13,7 @@
 - Native Base
 - Axios
 
-### Get Started
+### Get Started with iOS
 - npm install
 - cd ios, pod install
 - npm start

@@ -18,9 +18,24 @@ class SearchItemCard extends React.Component {
 
     render(){
         const { name, engName, category } = this.props.place;
-        // Send cards to the correct pages once those are built, currently all going to FoodJointDetails
+
+        let card = '';
+        switch(category){
+            case "eat":
+                card = 'FoodJointDetails';
+                break;
+            case "explore":
+                card = 'AttractionDetails';
+                break;
+            case "bike":
+                card = 'BikeDetails';
+                break;
+            case "hike":
+                card = 'HikeDetails';
+                break;
+        }
         return (
-            <TouchableOpacity delayPressIn={50} onPress={() => NavigationService.navigate('FoodJointDetails', {...this.props.place})}>
+            <TouchableOpacity delayPressIn={50} onPress={() => NavigationService.navigate(card, {...this.props.place, updateHeart: this.props.updateHeart, isLoggedIn: this.props.isLoggedIn})}>
                 <Card>
                     <CardItem>
                         <Left>
@@ -48,7 +63,9 @@ SearchItemCard.propTypes = {
         name: PropTypes.string,
         engName: PropTypes.string,
         category: PropTypes.string
-    })
+    }),
+    isLoggedIn: PropTypes.bool.isRequired,
+    updateHeart: PropTypes.func.isRequired
 }
 
 export default SearchItemCard;

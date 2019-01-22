@@ -5,6 +5,7 @@ import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
 import axios from 'axios';
 import SearchItemCard from './SearchItemCard';
 import Config from 'react-native-config';
+import PropTypes from 'prop-types';
 
 
 class SearchScreen extends Component {
@@ -79,7 +80,11 @@ class SearchScreen extends Component {
 
     renderResults() {
         return this.state.results.map(item => 
-                <SearchItemCard key={item.name} place={item}/>
+                <SearchItemCard 
+                    key={item.name} 
+                    place={item}
+                    updateHeart={this.props.screenProps.updateHeart} 
+                    isLoggedIn={this.props.screenProps.isLoggedIn}/>
         );
     }
 
@@ -165,6 +170,13 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     }
 });
+
+SearchScreen.propTypes = {
+    screenProps: PropTypes.shape({
+        isLoggedIn: PropTypes.bool.isRequired,
+        updateHeart: PropTypes.func.isRequired
+    })
+}
 
 export { SearchScreen };
 

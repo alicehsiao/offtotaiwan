@@ -24,10 +24,10 @@
 ### [Product Plan](https://gist.github.com/alicehsiao/7db6bf7a9d0d4b96cad21b90a53262ef)
 
 ### Login and Favorites
-![Login Feature](https://giphy.com/gifs/YFDkeiCahYgAAHgeIc/html5)
+![Login Feature](https://media.giphy.com/media/YFDkeiCahYgAAHgeIc/giphy.gif)
 
 ### Search
 ![Search Feature](https://media.giphy.com/media/1zlCNt93Dk1j7EXuA7/giphy.gif)
 
 ### Events and Bookmarks
-![Events Screen](https://s2.gifyu.com/images/OTTEvents.gif)
+![Events Screen](https://media.giphy.com/media/LUSKv1K6ROwn260hrx/giphy.gif)

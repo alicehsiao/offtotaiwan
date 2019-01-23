@@ -30,4 +30,4 @@
 ![Search Feature](https://media.giphy.com/media/1zlCNt93Dk1j7EXuA7/giphy.gif)
 
 ### Events and Bookmarks
-![Events Screen](https://media.giphy.com/media/LUSKv1K6ROwn260hrx/giphy.gif)
+![Events Screen](https://s2.gifyu.com/images/OTTEvents.gif)

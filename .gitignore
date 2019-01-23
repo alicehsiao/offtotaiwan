@@ -61,3 +61,5 @@ buck-out/
 ios/offtotaiwan/GoogleService-Info.plist
 
 config/off-to-taiwan-key.json
+
+ios/Pods

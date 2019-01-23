@@ -32,7 +32,6 @@ class App extends Component {
       if (value !== null) {
         const data = JSON.parse(value);
         await this.findUserInDatabase(data.name, data.email, data.provider, data.photoURL);
-      } else {
       }
     } catch (error) {
       console.log('Error Retrieving Data');
@@ -173,7 +172,7 @@ class App extends Component {
   loadPlaces = async () => {
     const places = ["hikingtrails", "bikepaths", "foodjoints", "attractions"]
     for (const place of places) {
-      const URL = `https://off-to-taiwan.herokuapp.com/api/v1/${place}`;
+      const URL = `https://www.offtotaiwan.com/api/v1/${place}`;
       let placeList = [...this.state.placeList]
       await axios.get(URL)
         .then(response => {
@@ -204,7 +203,7 @@ class App extends Component {
   }
 
   loadEvents = async () => {
-    const URL = 'https://off-to-taiwan.herokuapp.com/api/v1/activities';
+    const URL = 'https://www.offtotaiwan.com/api/v1/activities';
     await axios.get(URL)
       .then((response) => {
 

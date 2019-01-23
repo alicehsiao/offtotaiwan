@@ -33,7 +33,7 @@ class SearchScreen extends Component {
     }
 
     searchResults = async () => {
-        let URL = `https://off-to-taiwan.herokuapp.com/api/v1/search?name=${this.state.query}`;
+        let URL = `https://www.offtotaiwan.com/api/v1/search?name=${this.state.query}`;
 
         await axios.get(URL)
             .then(response => {

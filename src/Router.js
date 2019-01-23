@@ -65,7 +65,11 @@ const HomeStack = createStackNavigator({
 
 const SearchStack = createStackNavigator({
     Search: SearchScreen,
-    FoodJointDetails: FoodJointDetailScreen
+    FoodJointDetails: FoodJointDetailScreen,
+    AttractionDetails: AttractionDetailScreen,
+    HikeDetails: HikeDetailScreen,
+    BikeDetails: BikeDetailScreen
+
 });
 
 const EventsStack = createStackNavigator({

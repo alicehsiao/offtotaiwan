@@ -23,11 +23,4 @@
 ### [Product Plan](https://gist.github.com/alicehsiao/7db6bf7a9d0d4b96cad21b90a53262ef)
 
 ### Screenshots
-![Home Screen](./public/images/home.png)
-![Search Screen](./public/images/search.png)  
-
-![Events Screen](./public/images/events.png)
-![Favorites Screen](./public/images/favorites.png)  
-
-![Details Screen](./public/images/details.png)
-![Settings Screen](./public/images/settings.png)
+![Search Feature](https://photos.app.goo.gl/L1R4VCNe3ReM5GLB9)

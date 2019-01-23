@@ -24,7 +24,7 @@
 ### [Product Plan](https://gist.github.com/alicehsiao/7db6bf7a9d0d4b96cad21b90a53262ef)
 
 ### Login and Favorites
-![Login Feature](https://media.giphy.com/media/YFDkeiCahYgAAHgeIc/giphy.gif)
+![Login Feature](https://giphy.com/gifs/YFDkeiCahYgAAHgeIc/html5)
 
 ### Search
 ![Search Feature](https://media.giphy.com/media/1zlCNt93Dk1j7EXuA7/giphy.gif)

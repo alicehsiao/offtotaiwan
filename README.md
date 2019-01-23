@@ -23,4 +23,4 @@
 ### [Product Plan](https://gist.github.com/alicehsiao/7db6bf7a9d0d4b96cad21b90a53262ef)
 
 ### Screenshots
-![Search Feature](https://photos.app.goo.gl/L1R4VCNe3ReM5GLB9)
+![Search Feature](https://gph.is/2We5k55)

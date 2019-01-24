@@ -30,4 +30,4 @@
 ![Events Screen](https://media.giphy.com/media/iqNvRzMcIvkhsvaqqN/giphy.gif)
 
 ### Login and Favorites
-![Login Feature](https://media.giphy.com/media/2uIfr1D4ib7tI8U2ZJ/giphy.gif)
+![Login Feature](https://media.giphy.com/media/tHcXueQI2Eew9FAY1b/giphy.gif)

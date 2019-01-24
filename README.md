@@ -19,7 +19,7 @@
 - cd ios, pod install
 - npm start
 - npm run ios
-- build app in xcode
+- build app in xcode (requires GoogleService-Info.plist, i.e. Google project for Firebase)
 
 ### [Product Plan](https://gist.github.com/alicehsiao/7db6bf7a9d0d4b96cad21b90a53262ef)
 

@@ -23,11 +23,14 @@
 
 ### [Product Plan](https://gist.github.com/alicehsiao/7db6bf7a9d0d4b96cad21b90a53262ef)
 
+### App Intro
+![Home Screen](https://media.giphy.com/media/1n7zogTGcsrsaRKSwY/giphy.gif)
+
+### Login Flow
+![Login Feature](https://media.giphy.com/media/7zMtSTBljYB8F7NMWf/giphy.gif)
+
 ### Search
 ![Search Feature](https://media.giphy.com/media/1zlCNt93Dk1j7EXuA7/giphy.gif)
 
 ### Events and Bookmarks
 ![Events Screen](https://media.giphy.com/media/iqNvRzMcIvkhsvaqqN/giphy.gif)
-
-### Login and Favorites
-![Login Feature](https://media.giphy.com/media/tHcXueQI2Eew9FAY1b/giphy.gif)

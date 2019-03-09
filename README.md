@@ -1,6 +1,9 @@
 # **Capstone Project: Off To Taiwan**
 ## React Native with Firebase
 
+### API
+https://github.com/alicehsiao/capstone
+
 ### Tools/Packages Used
 #### (Note: some have additional installation requirements)
 - React Navigation

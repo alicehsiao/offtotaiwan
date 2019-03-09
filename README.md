@@ -1,7 +1,9 @@
 # **Capstone Project: Off To Taiwan**
-## React Native with Firebase
 
-### API
+### Description
+For my capstone project, I built a cross-platform mobile app for travel in Taiwan.
+
+### API on Node/Express with MongoDB
 https://github.com/alicehsiao/capstone
 
 ### Tools/Packages Used

@@ -1,5 +1,10 @@
 # **Capstone Project: Off To Taiwan**
-## React Native with Firebase
+
+### Description
+For my capstone project, I built a cross-platform mobile app for travel in Taiwan.
+
+### API on Node/Express with MongoDB
+https://github.com/alicehsiao/capstone
 
 ### Tools/Packages Used
 #### (Note: some have additional installation requirements)
@@ -19,15 +24,18 @@
 - cd ios, pod install
 - npm start
 - npm run ios
-- build app in xcode
+- build app in xcode (requires GoogleService-Info.plist, i.e. Google project for Firebase)
 
 ### [Product Plan](https://gist.github.com/alicehsiao/7db6bf7a9d0d4b96cad21b90a53262ef)
+
+### App Intro
+![Home Screen](https://media.giphy.com/media/1n7zogTGcsrsaRKSwY/giphy.gif)
+
+### Login Flow
+![Login Feature](https://media.giphy.com/media/7zMtSTBljYB8F7NMWf/giphy.gif)
 
 ### Search
 ![Search Feature](https://media.giphy.com/media/1zlCNt93Dk1j7EXuA7/giphy.gif)
 
 ### Events and Bookmarks
-![Events Screen](https://media.giphy.com/media/3XH8Hc66LMcQ67QAou/giphy.gif)
-
-### Login and Favorites
-![Login Feature](https://media.giphy.com/media/2uIfr1D4ib7tI8U2ZJ/giphy.gif)
+![Events Screen](https://media.giphy.com/media/iqNvRzMcIvkhsvaqqN/giphy.gif)
